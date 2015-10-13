@@ -1,0 +1,25 @@
+{
+  "name": "postcss-js",
+  "version": "0.0.0",
+  "description": "PostCSS for React Inline Styles, Free Style and other CSS-in-JS",
+  "keywords": [
+    "postcss",
+    "postcss-runner",
+    "js",
+    "inline",
+    "react",
+    "css"
+  ],
+  "author": "Andrey Sitnik <andrey@sitnik.ru>",
+  "license": "MIT",
+  "repository": "postcss/postcss-js",
+  "dependencies": {
+    "postcss": "^5.0.9"
+  },
+  "devDependencies": {
+    "eslint": "1.6.0"
+  },
+  "scripts": {
+    "test": "eslint *.js"
+  }
+}
