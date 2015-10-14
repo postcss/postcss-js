@@ -22,6 +22,6 @@
     "chai":   "3.3.0"
   },
   "scripts": {
-    "test": "eslint *.js && mocha test.js"
+    "test": "eslint *.js test/*.js && mocha"
   }
 }

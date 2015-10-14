@@ -1,4 +1,4 @@
-var postcssJS = require('./');
+var postcssJS = require('../');
 
 var postcss = require('postcss');
 var expect  = require('chai').expect;
@@ -81,12 +81,12 @@ describe('postcss-js', function () {
             expect(root.first.params).to.eql('');
         });
 
-    });
+        it('supports PostCSS syntax API', function () {
+            var css    = { color: 'black' };
+            var result = postcss().process(css, { parser: postcssJS });
+            expect(result.css).to.eql('color: black');
+        });
 
-    it('supports PostCSS syntax API', function () {
-        var css    = { color: 'black' };
-        var result = postcss().process(css, { parser: postcssJS });
-        expect(result.css).to.eql('color: black');
     });
 
 });
