@@ -14,7 +14,8 @@
   "license": "MIT",
   "repository": "postcss/postcss-js",
   "dependencies": {
-    "postcss": "^5.0.9"
+    "camelcase-css": "^1.0.0",
+    "postcss":       "^5.0.9"
   },
   "devDependencies": {
     "eslint": "1.6.0",

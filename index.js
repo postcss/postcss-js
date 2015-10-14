@@ -1,3 +1,4 @@
 module.exports = {
-    parse: require('./parser')
+    objectify: require('./ojectifier'),
+    parse:     require('./parser')
 };
