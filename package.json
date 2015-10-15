@@ -15,7 +15,7 @@
   "repository": "postcss/postcss-js",
   "dependencies": {
     "camelcase-css": "^1.0.0",
-    "postcss":       "^5.0.9"
+    "postcss":       "^5.0.10"
   },
   "devDependencies": {
     "eslint": "1.6.0",

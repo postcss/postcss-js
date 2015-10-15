@@ -1,4 +1,6 @@
 module.exports = {
-    objectify: require('./ojectifier'),
-    parse:     require('./parser')
+    objectify: require('./objectifier'),
+    parse:     require('./parser'),
+    async:     require('./async'),
+    sync:      require('./sync')
 };
