@@ -1,7 +1,7 @@
 {
   "name": "postcss-js",
   "version": "0.1.0",
-  "description": "PostCSS for React Inline Styles, Free Style and other CSS-in-JS",
+  "description": "PostCSS for React Inline Styles, Radium, Free Style and other CSS-in-JS",
   "keywords": [
     "postcss",
     "postcss-runner",

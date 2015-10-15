@@ -4,7 +4,7 @@
      title="Philosopher’s stone, logo of PostCSS"
      src="http://postcss.github.io/postcss/logo.svg">
 
-[PostCSS] for React Inline Styles, [Free Style] and other CSS-in-JS.
+[PostCSS] for React Inline Styles, Radium, [Free Style] and other CSS-in-JS.
 
 For example, to use [Autoprefixer], [RTLCSS] or [postcss-write-svg] plugins
 in your workflow.
