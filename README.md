@@ -7,7 +7,7 @@
 [PostCSS] for React Inline Styles, [Free Style] and other CSS-in-JS.
 
 For example, to use [Autoprefixer], [RTLCSS] or [postcss-write-svg] plugins
-in your workflow.
+in your workflow.
 
 [postcss-write-svg]: https://github.com/jonathantneal/postcss-write-svg
 [Autoprefixer]:      https://github.com/postcss/autoprefixer
