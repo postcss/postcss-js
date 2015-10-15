@@ -6,10 +6,16 @@
 
 [PostCSS] for React Inline Styles, [Free Style] and other CSS-in-JS.
 
-[Free Style]: https://github.com/blakeembrey/free-style
-[PostCSS]:    https://github.com/postcss/postcss
-[ci-img]:     https://travis-ci.org/postcss/postcss-js.svg
-[ci]:         https://travis-ci.org/postcss/postcss-js
+For example, to use [Autoprefixer], [RTLCSS] or [postcss-write-svg] plugins
+in your workflow.
+
+[postcss-write-svg]: https://github.com/jonathantneal/postcss-write-svg
+[Autoprefixer]:      https://github.com/postcss/autoprefixer
+[Free Style]:        https://github.com/blakeembrey/free-style
+[PostCSS]:           https://github.com/postcss/postcss
+[RTLCSS]:            https://github.com/jonathantneal/postcss-write-svg
+[ci-img]:            https://travis-ci.org/postcss/postcss-js.svg
+[ci]:                https://travis-ci.org/postcss/postcss-js
 
 ## Usage
 
