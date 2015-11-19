@@ -13,7 +13,7 @@ in your workflow.
 [Autoprefixer]:      https://github.com/postcss/autoprefixer
 [Free Style]:        https://github.com/blakeembrey/free-style
 [PostCSS]:           https://github.com/postcss/postcss
-[RTLCSS]:            https://github.com/jonathantneal/postcss-write-svg
+[RTLCSS]:            https://github.com/MohammadYounes/rtlcss
 [ci-img]:            https://travis-ci.org/postcss/postcss-js.svg
 [ci]:                https://travis-ci.org/postcss/postcss-js
 
