@@ -1,73 +1,54 @@
-var postcssJS = require('../');
+import postcss from 'postcss';
+import test    from 'ava';
 
-var postcss = require('postcss');
-var expect  = require('chai').expect;
+import postcssJS from '../';
 
-var doubler = postcss.plugin('test-doubler', function () {
-    return function (css) {
-        css.each(function (node) {
-            css.insertBefore(node, node.clone());
-        });
+let doubler = postcss.plugin('test-doubler', () => {
+    return (css) => {
+        css.each( node => css.insertBefore(node, node.clone()) );
     };
 });
 
-var warner = postcss.plugin('test-warner', function () {
-    return function (css, result) {
-        css.first.warn(result, 'Test');
-    };
+let warner = postcss.plugin('test-warner', () => {
+    return (css, result) => css.first.warn(result, 'Test');
 });
 
-describe('processors', function () {
-    var warnings, origin;
+let warnings, origin;
 
-    before(function () {
-        origin   = console.warn;
-        console.warn = function (msg) {
-            warnings.push(msg);
-        };
+test.before(() => {
+    origin       = console.warn;
+    console.warn = msg => warnings.push(msg);
+});
+
+test.after(() => {
+    console.warn = origin;
+});
+
+test.beforeEach(() => {
+    warnings = [];
+});
+
+test.serial('sync processes CSS-in-JS', t => {
+    let dbl = postcssJS.sync([doubler]);
+    t.same(dbl({ color: '#000' }), { color: ['#000', '#000'] });
+});
+
+test.serial('sync showes warnings', t => {
+    let wrn = postcssJS.sync([warner]);
+    wrn({ color: 'black' });
+    t.same(warnings, ['test-warner: Test']);
+});
+
+test.serial('async processes CSS-in-JS', t => {
+    let dbl = postcssJS.async([doubler]);
+    return dbl({ color: 'black' }).then(result => {
+        t.same(result, { color: ['black', 'black'] });
     });
+});
 
-    after(function () {
-        console.warn = origin;
+test.serial('async show warnings', t => {
+    let wrn = postcssJS.async([warner]);
+    return wrn({ color: 'black' }).then(() => {
+        t.same(warnings, ['test-warner: Test']);
     });
-
-    beforeEach(function () {
-        warnings = [];
-    });
-
-    describe('sync()', function () {
-
-        it('processes CSS-in-JS', function () {
-            var dbl = postcssJS.sync([doubler]);
-            expect(dbl({ color: '#000' })).to.eql({ color: ['#000', '#000'] });
-        });
-
-        it('show warnings', function () {
-            var wrn = postcssJS.sync([warner]);
-            wrn({ color: 'black' });
-            expect(warnings).to.eql(['test-warner: Test']);
-        });
-
-    });
-
-    describe('async()', function () {
-
-        it('processes CSS-in-JS', function (done) {
-            var dbl = postcssJS.async([doubler]);
-            dbl({ color: 'black' }).then(function (result) {
-                expect(result).to.eql({ color: ['black', 'black'] });
-                done();
-            });
-        });
-
-        it('show warnings', function (done) {
-            var wrn = postcssJS.async([warner]);
-            wrn({ color: 'black' }).then(function () {
-                expect(warnings).to.eql(['test-warner: Test']);
-                done();
-            });
-        });
-
-    });
-
 });
