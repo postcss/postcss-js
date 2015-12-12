@@ -44,6 +44,16 @@ describe('objectify()', function () {
         });
     });
 
+    it('merge rules', function () {
+        var root = parse('div { color:blue } div { padding:5px }');
+        expect(postcssJS.objectify(root)).to.eql({
+            div: {
+                color:   'blue',
+                padding: '5px'
+            }
+        });
+    });
+
     it('converts at-rules', function () {
         var root = parse('@media screen { color: black }');
         expect(postcssJS.objectify(root)).to.eql({

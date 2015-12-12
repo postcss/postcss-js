@@ -4,6 +4,18 @@ function process(node) {
     var name;
     var result = { };
     node.each(function (child) {
+        var rules = {};
+
+        node.each(function (rule) {
+            if ( rules[rule.selector] ) {
+                if ( rules[rule.selector].append ) {
+                    rules[rule.selector].append(rule.nodes);
+                    rule.remove();
+                }
+            } else {
+                rules[rule.selector] = rule;
+            }
+        });
 
         if ( child.type === 'atrule' ) {
             name = '@' + child.name;
