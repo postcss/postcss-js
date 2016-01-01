@@ -15,11 +15,11 @@
   "repository": "postcss/postcss-js",
   "dependencies": {
     "camelcase-css": "^1.0.0",
-    "postcss":       "^5.0.12"
+    "postcss":       "^5.0.13"
   },
   "devDependencies": {
     "eslint": "1.10.3",
-    "ava":    "0.7.0"
+    "ava":    "0.9.1"
   },
   "scripts": {
     "test": "ava && eslint *.js test/*.js"
