@@ -97,3 +97,36 @@ postcss().process(obj, { parser: postcssJs })
 ### `objectify(root): object`
 
 Convert PostCSS `Root` instance to CSS-in-JS style object.
+
+## Troubleshoot
+
+Webpack may need some extra config for some PostCSS plugins.
+
+### `Module parse failed`
+
+Autoprefixer and some other plugins
+need a [json-loader](https://github.com/webpack/json-loader) to import data.
+
+So, please install this loader and add to webpack config:
+
+```js
+loaders: [
+    {
+        test: /\.json$/,
+        loader: "json-loader"
+    }
+]
+```
+
+### `Cannot resolve module 'fs'`
+
+By default, webpack resolve system node.js modules to empty file.
+But `node` option in webpack config can disable it.
+
+If it is your case, please add to webpack config:
+
+```js
+node: {
+  fs: "empty"
+}
+```
