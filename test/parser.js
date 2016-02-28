@@ -43,6 +43,11 @@ test('supports prefixes', t => {
     t.same(root.toString(), '-moz-a: one;\n-ms-a: one');
 });
 
+test('supports cssFloat', t => {
+    let root = postcssJS.parse({ cssFloat: 'left' });
+    t.same(root.toString(), 'float: left');
+});
+
 test('adds pixels', t => {
     let root = postcssJS.parse({ a: 2 });
     t.same(root.toString(), 'a: 2px');

@@ -43,6 +43,8 @@ function decl(parent, name, value) {
         }
     }
 
+    if ( name === 'css-float' ) name = 'float';
+
     parent.push(postcss.decl({ prop: name, value: value }));
 }
 
