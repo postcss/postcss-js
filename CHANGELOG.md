@@ -1,3 +1,6 @@
+## 0.1.3
+* Fix rules merge with at-rules.
+
 ## 0.1.2
 * Add `cssFloat` alias support.
 
