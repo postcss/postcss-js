@@ -26,6 +26,9 @@
     "test": "ava && eslint *.js test/*.js"
   },
   "eslintConfig": {
-    "extends": "eslint-config-postcss/es5"
+    "extends": "eslint-config-postcss/es5",
+    "rules": {
+      "quote-props": 0
+    }
   }
 }

@@ -7,7 +7,9 @@ function process(node) {
         var rules = {};
 
         node.each(function (rule) {
-            if ( rules[rule.selector] ) {
+            if ( rule.type !== 'rule' ) {
+                return;
+            } else if ( rules[rule.selector] ) {
                 if ( rules[rule.selector].append ) {
                     rules[rule.selector].append(rule.nodes);
                     rule.remove();
