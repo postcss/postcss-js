@@ -30,25 +30,25 @@ test.beforeEach(() => {
 
 test.serial('sync processes CSS-in-JS', t => {
     let dbl = postcssJS.sync([doubler]);
-    t.same(dbl({ color: '#000' }), { color: ['#000', '#000'] });
+    t.deepEqual(dbl({ color: '#000' }), { color: ['#000', '#000'] });
 });
 
 test.serial('sync showes warnings', t => {
     let wrn = postcssJS.sync([warner]);
     wrn({ color: 'black' });
-    t.same(warnings, ['test-warner: Test']);
+    t.deepEqual(warnings, ['test-warner: Test']);
 });
 
 test.serial('async processes CSS-in-JS', t => {
     let dbl = postcssJS.async([doubler]);
     return dbl({ color: 'black' }).then(result => {
-        t.same(result, { color: ['black', 'black'] });
+        t.deepEqual(result, { color: ['black', 'black'] });
     });
 });
 
 test.serial('async show warnings', t => {
     let wrn = postcssJS.async([warner]);
     return wrn({ color: 'black' }).then(() => {
-        t.same(warnings, ['test-warner: Test']);
+        t.deepEqual(warnings, ['test-warner: Test']);
     });
 });
