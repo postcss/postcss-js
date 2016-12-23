@@ -81,9 +81,9 @@ test('does fall on at-rules in rules merge', t => {
     let root = parse('@media screen { z-index: 1 } z-index: 2');
     t.deepEqual(postcssJS.objectify(root), {
         '@media screen': {
-            zIndex: 1
+            zIndex: '1'
         },
-        zIndex: 2
+        zIndex: '2'
     });
 });
 
