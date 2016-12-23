@@ -28,7 +28,7 @@ it('converts declarations to camel case', () => {
 });
 
 it('maintains !important declarations', () => {
-    let root = parse('margin-bottom: 0 !important');
+    var root = parse('margin-bottom: 0 !important');
     expect(postcssJS.objectify(root)).toEqual({
         marginBottom: '0 !important'
     });
