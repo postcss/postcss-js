@@ -1,3 +1,6 @@
+## 0.2
+* Add `!important` support (by Dan Lynch).
+
 ## 0.1.3
 * Fix rules merge with at-rules.
 
