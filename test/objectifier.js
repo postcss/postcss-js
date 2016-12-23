@@ -28,6 +28,13 @@ test('converts declarations to camel case', t => {
     });
 });
 
+test('maintains !important declarations', t => {
+    let root = parse('margin-bottom: 0 !important');
+    t.deepEqual(postcssJS.objectify(root), {
+        marginBottom: '0 !important'
+    });
+});
+
 test('ignores comments', t => {
     let root = parse('color: black; /* test */');
     t.deepEqual(postcssJS.objectify(root), { color: 'black' });

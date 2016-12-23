@@ -5,7 +5,6 @@ function process(node) {
     var result = { };
     node.each(function (child) {
         var rules = {};
-
         node.each(function (rule) {
             if ( rule.type !== 'rule' ) {
                 return;
@@ -33,6 +32,8 @@ function process(node) {
 
         } else if ( child.type === 'decl' ) {
             name = camelcase(child.prop);
+            child.value = child.important ?
+                child.value + ' !important' : child.value;
             if ( typeof result[name] === 'undefined' ) {
                 result[name] = child.value;
             } else if ( Array.isArray(result[name]) ) {
