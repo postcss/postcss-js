@@ -9,3 +9,4 @@ yarn.lock
 
 .travis.yml
 test/
+coverage/
