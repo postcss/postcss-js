@@ -117,16 +117,3 @@ loaders: [
     }
 ]
 ```
-
-### `Cannot resolve module 'fs'`
-
-By default, webpack resolve system node.js modules to empty file.
-But `node` option in webpack config can disable it.
-
-If it is your case, please add to webpack config:
-
-```js
-node: {
-  fs: "empty"
-}
-```
