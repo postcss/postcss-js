@@ -1,3 +1,6 @@
+## 0.3
+* Add support for at-rules with same name (like `@font-face`).
+
 ## 0.2
 * Add `!important` support (by Dan Lynch).
 
