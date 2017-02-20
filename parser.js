@@ -48,21 +48,31 @@ function decl(parent, name, value) {
     parent.push(postcss.decl({ prop: name, value: value }));
 }
 
+function atRule(parent, parts, value) {
+    var node = postcss.atRule({ name: parts[1], params: parts[3] || '' });
+    if ( typeof value === 'object' ) {
+        node.nodes = [];
+        parse(value, node);
+    }
+    parent.push(node);
+}
+
 function parse(obj, parent) {
-    var name, value, node;
+    var name, value, node, i;
     for ( name in obj ) {
         if ( obj.hasOwnProperty(name) ) {
             value = obj[name];
             if ( name[0] === '@' ) {
-                var part = name.match(/@([^\s]+)(\s+([\w\W]*)\s*)?/);
-                node = postcss.atRule({ name: part[1], params: part[3] || '' });
-                if ( typeof value === 'object' ) {
-                    node.nodes = [];
-                    parse(value, node);
+                var parts = name.match(/@([^\s]+)(\s+([\w\W]*)\s*)?/);
+                if ( Array.isArray(value) ) {
+                    for ( i = 0; i < value.length; i++ ) {
+                        atRule(parent, parts, value[i]);
+                    }
+                } else {
+                    atRule(parent, parts, value);
                 }
-                parent.push(node);
             } else if ( Array.isArray(value) ) {
-                for ( var i = 0; i < value.length; i++ ) {
+                for ( i = 0; i < value.length; i++ ) {
                     decl(parent, name, value[i]);
                 }
             } else if ( typeof value === 'object' && value !== null ) {

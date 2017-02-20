@@ -1,5 +1,13 @@
 var camelcase = require('camelcase-css');
 
+function atRule(node) {
+    if ( typeof node.nodes === 'undefined' ) {
+        return true;
+    } else {
+        return process(node);
+    }
+}
+
 function process(node) {
     var name;
     var result = { };
@@ -21,10 +29,12 @@ function process(node) {
         if ( child.type === 'atrule' ) {
             name = '@' + child.name;
             if ( child.params ) name += ' ' + child.params;
-            if ( typeof child.nodes === 'undefined' ) {
-                result[name] = true;
+            if ( typeof result[name] === 'undefined' ) {
+                result[name] = atRule(child);
+            } else if ( Array.isArray(result[name]) ) {
+                result[name].push(atRule(child));
             } else {
-                result[name] = process(child);
+                result[name] = [result[name], atRule(child)];
             }
 
         } else if ( child.type === 'rule' ) {

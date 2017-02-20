@@ -18,6 +18,13 @@ it('converts declarations to array', () => {
     });
 });
 
+it('converts declarations to array', () => {
+    var root = parse('@font-face{font-family:A}@font-face{font-family: B}');
+    expect(postcssJS.objectify(root)).toEqual({
+        '@font-face': [{ fontFamily: 'A' }, { fontFamily: 'B' }]
+    });
+});
+
 it('converts declarations to camel case', () => {
     var root = parse('-webkit-z-index: 1; -ms-z-index: 1; z-index: 1');
     expect(postcssJS.objectify(root)).toEqual({

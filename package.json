@@ -44,6 +44,7 @@
   "eslintConfig": {
     "extends": "eslint-config-postcss/es5",
     "rules": {
+      "no-use-before-define": "off",
       "quote-props": "off"
     },
     "env": {

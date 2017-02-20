@@ -27,6 +27,15 @@ it('supports arrays', () => {
     expect(root.toString()).toEqual('color: black;\ncolor: rgba(0,0,0,0.5)');
 });
 
+it('supports arrays in at-rules', () => {
+    var root = postcssJS.parse({
+        '@font-face': [{ fontFamily: 'A' }, { fontFamily: 'B' }]
+    });
+    expect(root.toString()).toEqual(
+        '@font-face {\n    font-family: A\n}\n' +
+        '@font-face {\n    font-family: B\n}');
+});
+
 it('ignores declarations with null', () => {
     var root = postcssJS.parse({ color: null, background: false });
     expect(root.nodes.length).toEqual(0);
