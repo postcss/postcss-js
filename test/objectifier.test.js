@@ -19,9 +19,16 @@ it('converts declarations to array', () => {
 });
 
 it('converts declarations to array', () => {
-    var root = parse('@font-face{font-family:A}@font-face{font-family: B}');
+    var root = parse(
+        '@font-face { font-family: A }' +
+        '@font-face { font-family: B }' +
+        '@font-face { font-family: C }');
     expect(postcssJS.objectify(root)).toEqual({
-        '@font-face': [{ fontFamily: 'A' }, { fontFamily: 'B' }]
+        '@font-face': [
+            { fontFamily: 'A' },
+            { fontFamily: 'B' },
+            { fontFamily: 'C' }
+        ]
     });
 });
 
