@@ -8,7 +8,8 @@
     "js",
     "inline",
     "react",
-    "css"
+    "css",
+    "cssinjs"
   ],
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
   "license": "MIT",
