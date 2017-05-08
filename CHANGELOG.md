@@ -1,3 +1,6 @@
+## 1.0
+* Use PostCSS 6.0.
+
 ## 0.3
 * Add support for at-rules with same name (like `@font-face`).
 
