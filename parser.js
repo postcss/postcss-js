@@ -26,9 +26,10 @@ var unitless = {
 };
 
 function dashify(str) {
-    return str.replace(/([A-Z])/g, '-$1')
-              .replace(/^ms-/, '-ms-')
-              .toLowerCase();
+    return str
+        .replace(/([A-Z])/g, '-$1')
+        .replace(/^ms-/, '-ms-')
+        .toLowerCase();
 }
 
 function decl(parent, name, value) {
