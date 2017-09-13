@@ -37,13 +37,19 @@ it('supports arrays in at-rules', () => {
 });
 
 it('ignores declarations with null', () => {
-    var root = postcssJS.parse({ color: null, background: false });
+    var root = postcssJS.parse({
+        font: undefined,
+        color: null,
+        background: false
+    });
     expect(root.nodes.length).toEqual(0);
 });
 
-it('ignores declarations with null in array', () => {
-    var root = postcssJS.parse({ color: ['black', null, false] });
-    expect(root.toString()).toEqual('color: black');
+it('ignores null and undefined', () => {
+    var root1 = postcssJS.parse(null);
+    expect(root1.toString()).toEqual('');
+    var root2 = postcssJS.parse(undefined);
+    expect(root2.toString()).toEqual('');
 });
 
 it('supports prefixes', () => {

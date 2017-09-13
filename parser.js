@@ -63,7 +63,9 @@ function parse(obj, parent) {
     for ( name in obj ) {
         if ( obj.hasOwnProperty(name) ) {
             value = obj[name];
-            if ( name[0] === '@' ) {
+            if ( value === null || typeof value === 'undefined' ) {
+                continue;
+            } else if ( name[0] === '@' ) {
                 var parts = name.match(/@([^\s]+)(\s+([\w\W]*)\s*)?/);
                 if ( Array.isArray(value) ) {
                     for ( i = 0; i < value.length; i++ ) {
@@ -76,7 +78,7 @@ function parse(obj, parent) {
                 for ( i = 0; i < value.length; i++ ) {
                     decl(parent, name, value[i]);
                 }
-            } else if ( typeof value === 'object' && value !== null ) {
+            } else if ( typeof value === 'object' ) {
                 node = postcss.rule({ selector: name });
                 parse(value, node);
                 parent.push(node);
