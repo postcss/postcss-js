@@ -406,9 +406,9 @@ callsites@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/callsites/-/callsites-2.0.0.tgz#06eb84f00eea413da86affefacbffb36093b3c50"
 
-camelcase-css@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/camelcase-css/-/camelcase-css-1.0.1.tgz#157c4238265f5cf94a1dffde86446552cbf3f705"
+camelcase-css@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/camelcase-css/-/camelcase-css-2.0.0.tgz#76f0aed4924b9d3dde36adf14225c06d5a9835ae"
 
 camelcase@^1.0.2:
   version "1.2.1"

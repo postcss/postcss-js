@@ -113,3 +113,11 @@ it('converts at-rules without body', () => {
         '@charset "UTF-8"': true
     });
 });
+
+it('handles mixed case properties', () => {
+    var root = parse('COLOR: green; -WEBKIT-border-radius: 6px');
+    expect(postcssJS.objectify(root)).toEqual({
+        color: 'green',
+        WebkitBorderRadius: '6px'
+    });
+});
