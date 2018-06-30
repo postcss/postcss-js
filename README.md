@@ -19,21 +19,20 @@ in your workflow.
 ## Usage
 
 ### Installation
+
 ```sh
 npm i postcss-js
-# or with yarn
-yarn add postcss-js
 ```
 
 ### Processing
 
 ```js
-let postcssJs = require('postcss-js')
-let autoprefixer = require('autoprefixer')
+const postcssJs = require('postcss-js')
+const autoprefixer = require('autoprefixer')
 
-let prefixer = postcssJs.sync([ autoprefixer ]);
+const prefixer = postcssJs.sync([ autoprefixer ]);
 
-let style = prefixer({
+const style = prefixer({
     display: 'flex'
 });
 
@@ -43,10 +42,10 @@ style //=> { display: ['-webkit-box', '-webkit-flex', '-ms-flexbox', 'flex'] }
 ### Compile CSS-in-JS to CSS
 
 ```js
-let postcss = require('postcss')
-let postcssJs = require('postcss-js')
+const postcss = require('postcss')
+const postcssJs = require('postcss-js')
 
-let style = {
+const style = {
     top: 10,
     '&:hover': {
         top: 5
@@ -62,11 +61,11 @@ postcss().process(style, { parser: postcssJs }).then( (result) => {
 ### Compile CSS to CSS-in-JS
 
 ```js
-let postcss = require('postcss')
-let postcssJs = require('postcss-js')
+const postcss = require('postcss')
+const postcssJs = require('postcss-js')
 
-let css  = '@media screen { z-index: 1 }'
-let root = postcss.parse(css);
+const css  = '@media screen { z-index: 1 }'
+const root = postcss.parse(css);
 
 postcssJs.objectify(root) //=> { '@media screen': { zIndex: '1' } }
 ```
