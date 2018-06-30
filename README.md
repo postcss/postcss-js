@@ -18,9 +18,19 @@ in your workflow.
 
 ## Usage
 
+### Installation
+```sh
+npm i postcss-js
+# or with yarn
+yarn add postcss-js
+```
+
 ### Processing
 
 ```js
+let postcssJs = require('postcss-js')
+let autoprefixer = require('autoprefixer')
+
 let prefixer = postcssJs.sync([ autoprefixer ]);
 
 let style = prefixer({
@@ -33,6 +43,9 @@ style //=> { display: ['-webkit-box', '-webkit-flex', '-ms-flexbox', 'flex'] }
 ### Compile CSS-in-JS to CSS
 
 ```js
+let postcss = require('postcss')
+let postcssJs = require('postcss-js')
+
 let style = {
     top: 10,
     '&:hover': {
@@ -49,6 +62,9 @@ postcss().process(style, { parser: postcssJs }).then( (result) => {
 ### Compile CSS to CSS-in-JS
 
 ```js
+let postcss = require('postcss')
+let postcssJs = require('postcss-js')
+
 let css  = '@media screen { z-index: 1 }'
 let root = postcss.parse(css);
 
