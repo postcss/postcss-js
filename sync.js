@@ -1,12 +1,12 @@
-var postcss = require('postcss');
+var postcss = require('postcss')
 
-var processResult = require('./process-result');
-var parse         = require('./parser');
+var processResult = require('./process-result')
+var parse = require('./parser')
 
 module.exports = function (plugins) {
-    var processor = postcss(plugins);
-    return function (input) {
-        var result = processor.process(input, { parser: parse });
-        return processResult(result);
-    };
-};
+  var processor = postcss(plugins)
+  return function (input) {
+    var result = processor.process(input, { parser: parse })
+    return processResult(result)
+  }
+}
