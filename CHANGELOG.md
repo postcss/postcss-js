@@ -1,6 +1,10 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 2.0.0
+* Remove Node.js 9 and Node.js 4 support.
+* Use PostCSS 7.0.
+
 ## 1.0.1
 * Ignore nodes with `undefined` value.
 
