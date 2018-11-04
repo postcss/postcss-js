@@ -32,19 +32,19 @@
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-standard": "^3.1.0",
     "jest": "^23.4.1",
-    "lint-staged": "^7.2.0",
-    "pre-commit": "^1.2.2"
+    "lint-staged": "^7.2.0"
   },
   "scripts": {
-    "lint-staged": "lint-staged",
     "test": "jest --coverage && eslint *.js test/*.js"
   },
   "lint-staged": {
     "*.js": "eslint"
   },
-  "pre-commit": [
-    "lint-staged"
-  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "jest": {
     "coverageThreshold": {
       "global": {
