@@ -33,10 +33,15 @@ const autoprefixer = require('autoprefixer')
 const prefixer = postcssJs.sync([ autoprefixer ]);
 
 const style = prefixer({
-    display: 'flex'
+    userSelect: 'none'
 });
 
-style //=> { display: ['-webkit-box', '-webkit-flex', '-ms-flexbox', 'flex'] }
+style //=> {
+      //     WebkitUserSelect: 'none',
+      //        MozUserSelect: 'none',
+      //         msUserSelect: 'none',
+      //           userSelect: 'none'
+      //   }
 ```
 
 ### Compile CSS-in-JS to CSS
