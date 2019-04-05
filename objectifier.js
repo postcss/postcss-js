@@ -11,12 +11,11 @@ function atRule (node) {
 function process (node) {
   var name
   var result = { }
-  node.each(function (child) {
-    var rules = {}
-    node.each(function (rule) {
-      if (rule.type !== 'rule') {
 
-      } else if (rules[rule.selector]) {
+  var rules = {}
+  node.each(function (rule) {
+    if (rule.type === 'rule') {
+      if (rules[rule.selector]) {
         if (rules[rule.selector].append) {
           rules[rule.selector].append(rule.nodes)
           rule.remove()
@@ -24,8 +23,10 @@ function process (node) {
       } else {
         rules[rule.selector] = rule
       }
-    })
+    }
+  })
 
+  node.each(function (child) {
     if (child.type === 'atrule') {
       name = '@' + child.name
       if (child.params) name += ' ' + child.params
