@@ -12,20 +12,6 @@ function process (node) {
   var name
   var result = { }
 
-  var rules = {}
-  node.each(function (rule) {
-    if (rule.type === 'rule') {
-      if (rules[rule.selector]) {
-        if (rules[rule.selector].append) {
-          rules[rule.selector].append(rule.nodes)
-          rule.remove()
-        }
-      } else {
-        rules[rule.selector] = rule
-      }
-    }
-  })
-
   node.each(function (child) {
     if (child.type === 'atrule') {
       name = '@' + child.name
@@ -38,16 +24,24 @@ function process (node) {
         result[name] = [result[name], atRule(child)]
       }
     } else if (child.type === 'rule') {
-      result[child.selector] = process(child)
+      var body = process(child)
+      if (result[child.selector]) {
+        for (var i in body) {
+          result[child.selector][i] = body[i]
+        }
+      } else {
+        result[child.selector] = body
+      }
     } else if (child.type === 'decl') {
       name = camelcase(child.prop)
-      child.value = child.important ? child.value + ' !important' : child.value
+      var value = child.value
+      if (child.important) value += ' !important'
       if (typeof result[name] === 'undefined') {
-        result[name] = child.value
+        result[name] = value
       } else if (Array.isArray(result[name])) {
-        result[name].push(child.value)
+        result[name].push(value)
       } else {
-        result[name] = [result[name], child.value]
+        result[name] = [result[name], value]
       }
     }
   })
