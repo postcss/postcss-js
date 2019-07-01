@@ -14,6 +14,7 @@ it('parses declarations', function () {
 
 it('parses declarations with !important', function () {
   var root = postcssJS.parse({ color: 'black !important', background: 'white' })
+  expect(root.first.value).toEqual('black')
   expect(root.first.important).toBe(true)
   expect(root.last.important).toBe(undefined)
 })
