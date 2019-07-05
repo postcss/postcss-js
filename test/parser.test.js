@@ -12,6 +12,13 @@ it('parses declarations', function () {
   expect(root.toString()).toEqual('color: black;\nbackground: white')
 })
 
+it('parses declarations with !important', function () {
+  var root = postcssJS.parse({ color: 'black !important', background: 'white' })
+  expect(root.first.value).toEqual('black')
+  expect(root.first.important).toBe(true)
+  expect(root.last.important).toBe(undefined)
+})
+
 it('converts camelCase', function () {
   var root = postcssJS.parse({ zIndex: '1' })
   expect(root.toString()).toEqual('z-index: 1')
