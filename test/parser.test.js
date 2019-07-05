@@ -13,10 +13,16 @@ it('parses declarations', function () {
 })
 
 it('parses declarations with !important', function () {
-  var root = postcssJS.parse({ color: 'black !important', background: 'white' })
-  expect(root.first.value).toEqual('black')
-  expect(root.first.important).toBeTruthy()
-  expect(root.last.important).not.toBeDefined()
+  var root = postcssJS.parse({
+    color: 'black !important',
+    background: 'white!IMPORTANT  ',
+    fontFamily: 'A'
+  })
+  expect(root.nodes[0].value).toEqual('black')
+  expect(root.nodes[0].important).toBeTruthy()
+  expect(root.nodes[1].value).toEqual('white')
+  expect(root.nodes[1].important).toBeTruthy()
+  expect(root.nodes[2].important).not.toBeDefined()
 })
 
 it('converts camelCase', function () {

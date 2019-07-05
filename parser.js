@@ -1,5 +1,7 @@
 var postcss = require('postcss')
 
+var IMPORTANT = /\s*!important\s*$/i
+
 var unitless = {
   'box-flex': true,
   'box-flex-group': true,
@@ -46,7 +48,12 @@ function decl (parent, name, value) {
 
   if (name === 'css-float') name = 'float'
 
-  parent.push(postcss.decl({ prop: name, value: value }))
+  if (IMPORTANT.test(value)) {
+    value = value.replace(IMPORTANT, '')
+    parent.push(postcss.decl({ prop: name, value: value, important: true }))
+  } else {
+    parent.push(postcss.decl({ prop: name, value: value }))
+  }
 }
 
 function atRule (parent, parts, value) {
