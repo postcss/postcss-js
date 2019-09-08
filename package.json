@@ -16,7 +16,7 @@
   "repository": "postcss/postcss-js",
   "dependencies": {
     "camelcase-css": "^2.0.1",
-    "postcss": "^7.0.17"
+    "postcss": "^7.0.18"
   },
   "devDependencies": {
     "@logux/eslint-config": "^28.2.3",
