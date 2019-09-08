@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 2.0.3
+* Fix `from` option warning.
+
 ## 2.0.2
 * Fix `!important` support (by Adam Wathan).
 
