@@ -93,7 +93,7 @@ it('converts at-rules without params', function () {
 it('converts at-rules without children', function () {
   var root = parse('@media screen { }')
   expect(postcssJS.objectify(root)).toEqual({
-    '@media screen': { }
+    '@media screen': {}
   })
 })
 
@@ -119,5 +119,12 @@ it('handles mixed case properties', function () {
   expect(postcssJS.objectify(root)).toEqual({
     color: 'green',
     WebkitBorderRadius: '6px'
+  })
+})
+
+it('doesn\'t convert css variables', function () {
+  var root = parse('--test-variable: 0;')
+  expect(postcssJS.objectify(root)).toEqual({
+    '--test-variable': '0'
   })
 })

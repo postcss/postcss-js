@@ -10,7 +10,7 @@ function atRule (node) {
 
 function process (node) {
   var name
-  var result = { }
+  var result = {}
 
   node.each(function (child) {
     if (child.type === 'atrule') {
@@ -33,7 +33,7 @@ function process (node) {
         result[child.selector] = body
       }
     } else if (child.type === 'decl') {
-      if (child.prop.startsWith('--')) {
+      if (child.prop[0] === '-' && child.prop[1] === '-') {
         name = child.prop
       } else {
         name = camelcase(child.prop)
