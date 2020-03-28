@@ -33,7 +33,11 @@ function process (node) {
         result[child.selector] = body
       }
     } else if (child.type === 'decl') {
-      name = camelcase(child.prop)
+      if (child.prop.startsWith('--')) {
+        name = child.prop
+      } else {
+        name = camelcase(child.prop)
+      }
       var value = child.value
       if (child.important) value += ' !important'
       if (typeof result[name] === 'undefined') {
