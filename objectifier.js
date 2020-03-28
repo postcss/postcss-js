@@ -10,7 +10,7 @@ function atRule (node) {
 
 function process (node) {
   var name
-  var result = {}
+  var result = { }
 
   node.each(function (child) {
     if (child.type === 'atrule') {

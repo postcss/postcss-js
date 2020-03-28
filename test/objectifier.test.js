@@ -93,7 +93,7 @@ it('converts at-rules without params', function () {
 it('converts at-rules without children', function () {
   var root = parse('@media screen { }')
   expect(postcssJS.objectify(root)).toEqual({
-    '@media screen': {}
+    '@media screen': { }
   })
 })
 
