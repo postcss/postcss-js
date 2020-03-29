@@ -73,7 +73,7 @@ const css  = '--text-color: #DD3A0A; @media screen { z-index: 1; color: var(--te
 const root = postcss.parse(css);
 
 postcssJs.objectify(root) //=> {
-                          //     --text-color: '#DD3A0A',
+                          //     '--text-color': '#DD3A0A',
                           //     '@media screen': {
                           //       zIndex: '1',
                           //       color: 'var(--text-color)'
