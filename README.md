@@ -69,10 +69,16 @@ postcss().process(style, { parser: postcssJs }).then( (result) => {
 const postcss = require('postcss')
 const postcssJs = require('postcss-js')
 
-const css  = '@media screen { z-index: 1 }'
+const css  = '--text-color: #DD3A0A; @media screen { z-index: 1; color: var(--text-color) }'
 const root = postcss.parse(css);
 
-postcssJs.objectify(root) //=> { '@media screen': { zIndex: '1' } }
+postcssJs.objectify(root) //=> {
+                          //     --text-color: '#DD3A0A',
+                          //     '@media screen': {
+                          //       zIndex: '1',
+                          //       color: 'var(--text-color)'
+                          //     }
+                          //   }
 ```
 
 ## API
