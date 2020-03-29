@@ -121,3 +121,10 @@ it('handles mixed case properties', function () {
     WebkitBorderRadius: '6px'
   })
 })
+
+it('doesn\'t convert css variables', function () {
+  var root = parse('--test-variable: 0;')
+  expect(postcssJS.objectify(root)).toEqual({
+    '--test-variable': '0'
+  })
+})
