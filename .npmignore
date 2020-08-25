@@ -3,4 +3,3 @@ yarn.lock
 
 test/
 coverage/
-*.test.js
