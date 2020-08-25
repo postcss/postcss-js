@@ -1,9 +1,9 @@
-var objectify = require('./objectifier')
+let objectify = require('./objectifier')
 
-module.exports = function (result) {
+module.exports = function processResult (result) {
   if (console && console.warn) {
-    result.warnings().forEach(function (warn) {
-      var source = warn.plugin || 'PostCSS'
+    result.warnings().forEach(warn => {
+      let source = warn.plugin || 'PostCSS'
       console.warn(source + ': ' + warn.text)
     })
   }

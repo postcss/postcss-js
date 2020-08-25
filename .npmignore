@@ -1,8 +1,6 @@
-.editorconfig
-
 yarn-error.log
 yarn.lock
 
-.travis.yml
 test/
 coverage/
+*.test.js

@@ -1,53 +1,59 @@
-var postcss = require('postcss')
+let postcssJS = require('../')
 
-var postcssJS = require('../')
+let doubler = () => ({
+  postcssPlugin: 'test-doubler',
+  Root (root) {
+    root.each(node => root.insertBefore(node, node.clone()))
+  }
+})
+doubler.postcss = true
 
-var doubler = postcss.plugin('test-doubler', function () {
-  return function (css) {
-    css.each(function (node) { return css.insertBefore(node, node.clone()) })
+let warner = () => ({
+  postcssPlugin: 'test-warner',
+  Root (root, { result }) {
+    return root.first.warn(result, 'Test')
+  }
+})
+warner.postcss = true
+
+let warnings, origin
+
+beforeAll(() => {
+  origin = console.warn
+  console.warn = msg => {
+    warnings.push(msg)
   }
 })
 
-var warner = postcss.plugin('test-warner', function () {
-  return function (css, result) { return css.first.warn(result, 'Test') }
-})
-
-var warnings, origin
-
-beforeAll(function () {
-  origin = console.warn
-  console.warn = function (msg) { return warnings.push(msg) }
-})
-
-afterAll(function () {
+afterAll(() => {
   console.warn = origin
 })
 
-beforeEach(function () {
+beforeEach(() => {
   warnings = []
 })
 
-it('processes CSS-in-JS', function () {
-  var dbl = postcssJS.sync([doubler])
+it('processes CSS-in-JS', () => {
+  let dbl = postcssJS.sync([doubler])
   expect(dbl({ color: '#000' })).toEqual({ color: ['#000', '#000'] })
 })
 
-it('showes warnings', function () {
-  var wrn = postcssJS.sync([warner])
+it('showes warnings', () => {
+  let wrn = postcssJS.sync([warner])
   wrn({ color: 'black' })
   expect(warnings).toEqual(['test-warner: Test'])
 })
 
-it('converts properties to array', function () {
-  var dbl = postcssJS.async([doubler])
-  return dbl({ color: 'black' }).then(function (result) {
+it('converts properties to array', () => {
+  let dbl = postcssJS.async([doubler])
+  return dbl({ color: 'black' }).then(result => {
     expect(result).toEqual({ color: ['black', 'black'] })
   })
 })
 
-it('show warnings', function () {
-  var wrn = postcssJS.async([warner])
-  return wrn({ color: 'black' }).then(function () {
+it('show warnings', () => {
+  let wrn = postcssJS.async([warner])
+  return wrn({ color: 'black' }).then(() => {
     expect(warnings).toEqual(['test-warner: Test'])
   })
 })

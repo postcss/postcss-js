@@ -1,14 +1,15 @@
-var postcss = require('postcss')
+let postcss = require('postcss')
 
-var processResult = require('./process-result')
-var parse = require('./parser')
+let processResult = require('./process-result')
+let parse = require('./parser')
 
-module.exports = function (plugins) {
-  var processor = postcss(plugins)
-  return function (input) {
-    return processor.process(input, {
+module.exports = function async (plugins) {
+  let processor = postcss(plugins)
+  return async input => {
+    let result = await processor.process(input, {
       parser: parse,
       from: undefined
-    }).then(processResult)
+    })
+    return processResult(result)
   }
 }

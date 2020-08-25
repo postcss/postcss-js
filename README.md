@@ -1,28 +1,26 @@
-# PostCSS JS [![Build Status][ci-img]][ci]
+# PostCSS JS
 
-<img align="right" width="95" height="95"
+<img align="right" width="135" height="95"
      title="Philosopher’s stone, logo of PostCSS"
-     src="http://postcss.github.io/postcss/logo.svg">
+     src="https://postcss.org/logo-leftp.svg">
 
 [PostCSS] for React Inline Styles, Radium, JSS and other CSS-in-JS.
 
 For example, to use [Stylelint], [RTLCSS] or [postcss-write-svg] plugins
 in your workflow.
 
+<a href="https://evilmartians.com/?utm_source=postcss-js">
+  <img src="https://evilmartians.com/badges/sponsored-by-evil-martians.svg"
+       alt="Sponsored by Evil Martians" width="236" height="54">
+</a>
+
 [postcss-write-svg]: https://github.com/jonathantneal/postcss-write-svg
 [Stylelint]:         https://github.com/stylelint/stylelint
 [PostCSS]:           https://github.com/postcss/postcss
 [RTLCSS]:            https://github.com/MohammadYounes/rtlcss
-[ci-img]:            https://travis-ci.org/postcss/postcss-js.svg
-[ci]:                https://travis-ci.org/postcss/postcss-js
+
 
 ## Usage
-
-### Installation
-
-```sh
-npm i postcss-js
-```
 
 ### Processing
 
@@ -30,11 +28,11 @@ npm i postcss-js
 const postcssJs = require('postcss-js')
 const autoprefixer = require('autoprefixer')
 
-const prefixer = postcssJs.sync([ autoprefixer ]);
+const prefixer = postcssJs.sync([ autoprefixer ])
 
 const style = prefixer({
-    userSelect: 'none'
-});
+  userSelect: 'none'
+})
 
 style //=> {
       //     WebkitUserSelect: 'none',
@@ -44,6 +42,7 @@ style //=> {
       //   }
 ```
 
+
 ### Compile CSS-in-JS to CSS
 
 ```js
@@ -51,17 +50,18 @@ const postcss = require('postcss')
 const postcssJs = require('postcss-js')
 
 const style = {
-    top: 10,
-    '&:hover': {
-        top: 5
-    }
+  top: 10,
+  '&:hover': {
+    top: 5
+  }
 };
 
 postcss().process(style, { parser: postcssJs }).then( (result) => {
-    result.css //=> top: 10px;
-               //   &:hover { top: 5px; }
+  result.css //=> top: 10px;
+             //   &:hover { top: 5px; }
 })
 ```
+
 
 ### Compile CSS to CSS-in-JS
 
@@ -70,7 +70,7 @@ const postcss = require('postcss')
 const postcssJs = require('postcss-js')
 
 const css  = '--text-color: #DD3A0A; @media screen { z-index: 1; color: var(--text-color) }'
-const root = postcss.parse(css);
+const root = postcss.parse(css)
 
 postcssJs.objectify(root) //=> {
                           //     '--text-color': '#DD3A0A',
@@ -81,6 +81,7 @@ postcssJs.objectify(root) //=> {
                           //   }
 ```
 
+
 ## API
 
 ### `sync(plugins): function`
@@ -90,11 +91,13 @@ support.
 
 Processor is just a function, which takes one style object and return other.
 
+
 ### `async(plugins): function`
 
 Same as `sync`, but also support async plugins.
 
 Returned processor will return Promise.
+
 
 ### `parse(obj): Root`
 
@@ -119,13 +122,16 @@ This methods use Custom Syntax name convention, so you can use it like this:
 postcss().process(obj, { parser: postcssJs })
 ```
 
+
 ### `objectify(root): object`
 
 Convert PostCSS `Root` instance to CSS-in-JS style object.
 
+
 ## Troubleshoot
 
 Webpack may need some extra config for some PostCSS plugins.
+
 
 ### `Module parse failed`
 
@@ -136,9 +142,9 @@ So, please install this loader and add to webpack config:
 
 ```js
 loaders: [
-    {
-        test: /\.json$/,
-        loader: "json-loader"
-    }
+  {
+    test: /\.json$/,
+    loader: "json-loader"
+  }
 ]
 ```

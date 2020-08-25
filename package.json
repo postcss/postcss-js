@@ -14,49 +14,65 @@
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
   "license": "MIT",
   "repository": "postcss/postcss-js",
+  "scripts": {
+    "test": "jest-ci --coverage && eslint-ci ."
+  },
   "dependencies": {
     "camelcase-css": "^2.0.1",
-    "postcss": "^7.0.18"
+    "postcss": "postcss/postcss#ose"
+  },
+  "exports": {
+    ".": {
+      "require": "./index.js",
+      "import": "./index.mjs"
+    },
+    "./": "./"
   },
   "devDependencies": {
-    "@logux/eslint-config": "^28.2.3",
-    "clean-publish": "^1.1.2",
-    "eslint": "^6.0.1",
-    "eslint-config-postcss": "^3.0.7",
-    "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-es5": "^1.4.1",
-    "eslint-plugin-import": "^2.18.0",
-    "eslint-plugin-import-helpers": "^1.0.1",
-    "eslint-plugin-jest": "^22.7.2",
-    "eslint-plugin-node": "^9.1.0",
+    "@logux/eslint-config": "^40.0.3",
+    "clean-publish": "^1.1.8",
+    "eslint": "^7.7.0",
+    "eslint-ci": "^1.0.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jest": "^23.20.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prefer-let": "^1.0.2",
+    "eslint-plugin-prettierx": "^0.14.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-security": "^1.4.0",
-    "eslint-plugin-standard": "^4.0.0",
-    "jest": "^24.8.0",
-    "lint-staged": "^9.0.2"
-  },
-  "scripts": {
-    "test": "jest --coverage && eslint *.js test/*.js"
-  },
-  "lint-staged": {
-    "*.js": "eslint"
+    "eslint-plugin-standard": "^4.0.1",
+    "eslint-plugin-unicorn": "^21.0.0",
+    "husky": "^4.2.5",
+    "jest": "^26.4.2",
+    "jest-ci": "^0.1.1",
+    "lint-staged": "^10.2.11",
+    "postcss-sharec-config": "^0.1.1"
   },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
   },
+  "lint-staged": {
+    "*.js": "eslint --fix"
+  },
+  "eslintConfig": {
+    "extends": "@logux/eslint-config",
+    "rules": {
+      "security/detect-unsafe-regex": "off"
+    }
+  },
   "jest": {
+    "testEnvironment": "node",
     "coverageThreshold": {
       "global": {
         "statements": 100
       }
     }
   },
-  "eslintConfig": {
-    "extends": "eslint-config-postcss/es5",
-    "rules": {
-      "security/detect-unsafe-regex": "off"
-    }
+  "sharec": {
+    "config": "postcss-sharec-config",
+    "version": "0.1.2"
   }
 }

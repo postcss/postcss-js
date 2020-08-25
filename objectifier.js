@@ -1,4 +1,4 @@
-var camelcase = require('camelcase-css')
+let camelcase = require('camelcase-css')
 
 function atRule (node) {
   if (typeof node.nodes === 'undefined') {
@@ -9,10 +9,10 @@ function atRule (node) {
 }
 
 function process (node) {
-  var name
-  var result = { }
+  let name
+  let result = {}
 
-  node.each(function (child) {
+  node.each(child => {
     if (child.type === 'atrule') {
       name = '@' + child.name
       if (child.params) name += ' ' + child.params
@@ -24,9 +24,9 @@ function process (node) {
         result[name] = [result[name], atRule(child)]
       }
     } else if (child.type === 'rule') {
-      var body = process(child)
+      let body = process(child)
       if (result[child.selector]) {
-        for (var i in body) {
+        for (let i in body) {
           result[child.selector][i] = body[i]
         }
       } else {
@@ -38,7 +38,7 @@ function process (node) {
       } else {
         name = camelcase(child.prop)
       }
-      var value = child.value
+      let value = child.value
       if (child.important) value += ' !important'
       if (typeof result[name] === 'undefined') {
         result[name] = value
