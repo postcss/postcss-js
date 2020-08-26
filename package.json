@@ -17,9 +17,8 @@
   "scripts": {
     "test": "jest-ci --coverage && eslint-ci ."
   },
-  "dependencies": {
-    "camelcase-css": "^2.0.1",
-    "postcss": "postcss/postcss#ose"
+  "engines": {
+    "node": ">=10.0"
   },
   "exports": {
     ".": {
@@ -27,6 +26,10 @@
       "import": "./index.mjs"
     },
     "./": "./"
+  },
+  "dependencies": {
+    "camelcase-css": "^2.0.1",
+    "postcss": "postcss/postcss#ose"
   },
   "devDependencies": {
     "@logux/eslint-config": "^40.0.3",
@@ -46,8 +49,8 @@
     "husky": "^4.2.5",
     "jest": "^26.4.2",
     "jest-ci": "^0.1.1",
-    "lint-staged": "^10.2.11",
-    "postcss-sharec-config": "^0.1.1"
+    "lint-staged": "^10.2.13",
+    "postcss-sharec-config": "^0.1.3"
   },
   "husky": {
     "hooks": {
@@ -73,6 +76,6 @@
   },
   "sharec": {
     "config": "postcss-sharec-config",
-    "version": "0.1.2"
+    "version": "0.1.3"
   }
 }
