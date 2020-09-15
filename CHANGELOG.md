@@ -1,6 +1,12 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 3.0
+* Removed support for Node.js 6.x, 8.x, 11.x, and 13.x versions.
+* Moved to PostCSS 8.0.
+* Added ES modules support.
+* Avoid stringification of unitless values (by Rishabh Rathod).
+
 ## 2.0.3
 * Fix `from` option warning.
 
