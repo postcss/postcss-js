@@ -34,7 +34,7 @@ it('converts declarations to camel case', () => {
   expect(postcssJS.objectify(root)).toEqual({
     WebkitZIndex: '1',
     msZIndex: '1',
-    zIndex: '1'
+    zIndex: 1
   })
 })
 
@@ -98,9 +98,9 @@ it('does fall on at-rules in rules merge', () => {
   let root = parse('@media screen { z-index: 1 } z-index: 2')
   expect(postcssJS.objectify(root)).toEqual({
     '@media screen': {
-      zIndex: '1'
+      zIndex: 1
     },
-    'zIndex': '2'
+    'zIndex': 2
   })
 })
 
@@ -123,5 +123,13 @@ it("doesn't convert css variables", () => {
   let root = parse('--test-variable: 0;')
   expect(postcssJS.objectify(root)).toEqual({
     '--test-variable': '0'
+  })
+})
+
+it('converts unitless value to number instead of string', () => {
+  let root = parse('z-index: 100; opacity: .1;')
+  expect(postcssJS.objectify(root)).toEqual({
+    zIndex: 100,
+    opacity: 0.1
   })
 })
