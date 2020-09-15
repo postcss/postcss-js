@@ -1,5 +1,30 @@
 let camelcase = require('camelcase-css')
 
+let UNITLESS = {
+  boxFlex: true,
+  boxFlexGroup: true,
+  columnCount: true,
+  flex: true,
+  flexGrow: true,
+  flexPositive: true,
+  flexShrink: true,
+  flexNegative: true,
+  fontWeight: true,
+  lineClamp: true,
+  lineHeight: true,
+  opacity: true,
+  order: true,
+  orphans: true,
+  tabSize: true,
+  widows: true,
+  zIndex: true,
+  zoom: true,
+  fillOpacity: true,
+  strokeDashoffset: true,
+  strokeOpacity: true,
+  strokeWidth: true
+}
+
 function atRule (node) {
   if (typeof node.nodes === 'undefined') {
     return true
@@ -39,6 +64,9 @@ function process (node) {
         name = camelcase(child.prop)
       }
       let value = child.value
+      if (!isNaN(child.value) && UNITLESS[name]) {
+        value = parseFloat(child.value)
+      }
       if (child.important) value += ' !important'
       if (typeof result[name] === 'undefined') {
         result[name] = value
