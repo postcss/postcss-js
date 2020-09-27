@@ -2,7 +2,7 @@ let postcssJS = require('../')
 
 let doubler = () => ({
   postcssPlugin: 'test-doubler',
-  Root (root) {
+  Once (root) {
     root.each(node => root.insertBefore(node, node.clone()))
   }
 })
@@ -10,7 +10,7 @@ doubler.postcss = true
 
 let warner = () => ({
   postcssPlugin: 'test-warner',
-  Root (root, { result }) {
+  Once (root, { result }) {
     return root.first.warn(result, 'Test')
   }
 })
