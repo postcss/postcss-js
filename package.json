@@ -55,7 +55,6 @@
     "jest-ci": "^0.1.1",
     "jest-cli": "^26.6.3",
     "lint-staged": "^10.5.1",
-    "postcss": "^8.1.0",
     "postcss-sharec-config": "^0.1.9"
   },
   "husky": {
