@@ -25,7 +25,7 @@
       "require": "./index.js",
       "import": "./index.mjs"
     },
-    "./": "./"
+    "./*": "./*"
   },
   "funding": {
     "type": "opencollective",
