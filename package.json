@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "camelcase-css": "^2.0.1",
-    "postcss": "^8.1.5"
+    "postcss": "^8.1.6"
   },
   "devDependencies": {
     "@logux/eslint-config": "^42.2.0",
