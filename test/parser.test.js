@@ -105,3 +105,14 @@ it('supports PostCSS syntax API', () => {
   let result = postcss().process({ color: 'black' }, { parser: postcssJS })
   expect(result.css).toEqual('color: black')
 })
+
+it('preseves casing for css variables', () => {
+  let root = postcssJS.parse({
+    '--testVariable0': '0',
+    '--test-Variable-1': '1',
+    '--test-variable-2': '2'
+  })
+  expect(root.toString()).toEqual(
+    '--testVariable0: 0;\n--test-Variable-1: 1;\n--test-variable-2: 2'
+  )
+})
