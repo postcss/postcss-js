@@ -4,7 +4,7 @@ specifiers:
   '@logux/eslint-config': ^46.1.1
   c8: ^7.11.0
   camelcase-css: ^2.0.1
-  clean-publish: ^3.4.4
+  clean-publish: ^3.4.5
   eslint: ^8.6.0
   eslint-config-standard: ^16.0.3
   eslint-plugin-import: ^2.25.4
@@ -20,7 +20,7 @@ dependencies:
 devDependencies:
   '@logux/eslint-config': 46.1.1_d1222171c29616668e681fe85aa8127f
   c8: 7.11.0
-  clean-publish: 3.4.4
+  clean-publish: 3.4.5
   eslint: 8.6.0
   eslint-config-standard: 16.0.3_8d3cc733693a55bff97313a767012510
   eslint-plugin-import: 2.25.4_eslint@8.6.0
@@ -247,8 +247,8 @@ packages:
       supports-color: 7.2.0
     dev: true
 
-  /clean-publish/3.4.4:
-    resolution: {integrity: sha512-eCWBBLbaOBqLtxQrjBDSI1tSmx6tKckV2H0C9/je0eQg2QOGGnjE1XKc01V8M3vKe7bJuCut5hF/yUwLGLZoVA==}
+  /clean-publish/3.4.5:
+    resolution: {integrity: sha512-wxtaEqCy/B7lch+bpTPmx9wI8owTODa619UOVA1XfyNaM2bjwv1SkR1IJNDA6rtf89bjiz6UkpfU5HcEL8YJIw==}
     engines: {node: ^12.0.0 || ^14.0.0 || >= 16.0.0}
     hasBin: true
     dependencies:
