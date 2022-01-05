@@ -1,5 +1,5 @@
 language: node_js
-cache: yarn
+cache: pnpm
 node_js:
   - node
   - "14"
