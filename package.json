@@ -76,5 +76,8 @@
     ],
     "lines": 100,
     "check-coverage": true
+  },
+  "clean-publish": {
+    "cleanDocs": true
   }
 }
