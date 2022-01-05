@@ -1,6 +1,12 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 4.0
+* Removed Node.js 10 support.
+* Moved `postcss` to `peerDependencies`.
+* Added case preserving of CSS Custom Properties (by Jordan Pittman).
+* Fixed `package.exports`.
+
 ## 3.0.3
 * Reverted `package.exports` Node.js 15 fix.
 
