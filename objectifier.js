@@ -25,7 +25,7 @@ let UNITLESS = {
   strokeWidth: true
 }
 
-function atRule (node) {
+function atRule(node) {
   if (typeof node.nodes === 'undefined') {
     return true
   } else {
@@ -33,7 +33,7 @@ function atRule (node) {
   }
 }
 
-function process (node) {
+function process(node) {
   let name
   let result = {}
 

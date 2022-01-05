@@ -27,14 +27,14 @@ let UNITLESS = {
   'stroke-width': true
 }
 
-function dashify (str) {
+function dashify(str) {
   return str
     .replace(/([A-Z])/g, '-$1')
     .replace(/^ms-/, '-ms-')
     .toLowerCase()
 }
 
-function decl (parent, name, value) {
+function decl(parent, name, value) {
   if (value === false || value === null) return
 
   if (!name.startsWith('--')) {
@@ -59,7 +59,7 @@ function decl (parent, name, value) {
   }
 }
 
-function atRule (parent, parts, value) {
+function atRule(parent, parts, value) {
   let node = postcss.atRule({ name: parts[1], params: parts[3] || '' })
   if (typeof value === 'object') {
     node.nodes = []
@@ -68,7 +68,7 @@ function atRule (parent, parts, value) {
   parent.push(node)
 }
 
-function parse (obj, parent) {
+function parse(obj, parent) {
   let name, value, node
   for (name in obj) {
     value = obj[name]
