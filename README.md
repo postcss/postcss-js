@@ -4,7 +4,7 @@
      title="Philosopher’s stone, logo of PostCSS"
      src="https://postcss.org/logo-leftp.svg">
 
-[PostCSS] for React Inline Styles, Radium, JSS and other CSS-in-JS.
+[PostCSS] for for CSS-in-JS and styles in JS objects.
 
 For example, to use [Stylelint], [RTLCSS] or [postcss-write-svg] plugins
 in your workflow.
