@@ -37,7 +37,10 @@ function dashify (str) {
 function decl (parent, name, value) {
   if (value === false || value === null) return
 
-  name = dashify(name)
+  if (!name.startsWith('--')) {
+    name = dashify(name)
+  }
+
   if (typeof value === 'number') {
     if (value === 0 || UNITLESS[name]) {
       value = value.toString()
