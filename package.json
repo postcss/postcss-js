@@ -36,9 +36,11 @@
     "type": "opencollective",
     "url": "https://opencollective.com/postcss/"
   },
+  "peerDependencies": {
+    "postcss": "^8.3.3"
+  },
   "dependencies": {
-    "camelcase-css": "^2.0.1",
-    "postcss": "^8.4.5"
+    "camelcase-css": "^2.0.1"
   },
   "devDependencies": {
     "@logux/eslint-config": "^46.1.1",
@@ -50,6 +52,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prefer-let": "^3.0.1",
     "eslint-plugin-promise": "^6.0.0",
+    "postcss": "^8.4.5",
     "uvu": "^0.5.3"
   },
   "prettier": {
