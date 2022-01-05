@@ -26,6 +26,7 @@
       "require": "./index.js",
       "import": "./index.mjs"
     },
+    "./package.json": "./package.json",
     "./async": "./async.js",
     "./objectifier": "./objectifier.js",
     "./parser": "./parser.js",
