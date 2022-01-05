@@ -15,8 +15,8 @@
   "license": "MIT",
   "repository": "postcss/postcss-js",
   "scripts": {
-    "unit": "jest",
-    "test": "jest --coverage && eslint ."
+    "unit": "uvu test \"\\.test\\.js$\"",
+    "test": "c8 pnpm unit && eslint ."
   },
   "engines": {
     "node": ">=10.0"
@@ -42,26 +42,28 @@
   },
   "devDependencies": {
     "@logux/eslint-config": "^46.1.1",
+    "c8": "^7.11.0",
     "clean-publish": "^3.4.4",
     "eslint": "^8.6.0",
     "eslint-config-standard": "^16.0.3",
-    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prefer-let": "^3.0.1",
     "eslint-plugin-promise": "^6.0.0",
-    "jest": "^27.4.6"
+    "uvu": "^0.5.3"
+  },
+  "prettier": {
+    "arrowParens": "avoid",
+    "jsxSingleQuote": false,
+    "quoteProps": "consistent",
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "none"
   },
   "eslintConfig": {
     "extends": "@logux/eslint-config",
     "rules": {
       "no-console": "off"
-    },
-    "globals": {
-      "beforeEach": "readonly",
-      "beforeAll": "readonly",
-      "afterAll": "readonly",
-      "it": "readonly",
-      "expect": "readonly"
     }
   },
   "jest": {

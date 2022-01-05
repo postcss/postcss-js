@@ -1,118 +1,124 @@
+let { equal, type, is } = require('uvu/assert')
+let { test } = require('uvu')
 let postcss = require('postcss')
 
 let postcssJS = require('../')
 
-it('returns root', () => {
+test('returns root', () => {
   let root = postcssJS.parse({ color: 'black' })
-  expect(root.type).toEqual('root')
+  equal(root.type, 'root')
 })
 
-it('parses declarations', () => {
+test('parses declarations', () => {
   let root = postcssJS.parse({ color: 'black', background: 'white' })
-  expect(root.toString()).toEqual('color: black;\nbackground: white')
+  equal(root.toString(), 'color: black;\nbackground: white')
 })
 
-it('parses declarations with !important', () => {
+test('parses declarations with !important', () => {
   let root = postcssJS.parse({
     color: 'black !important',
     background: 'white!IMPORTANT  ',
     fontFamily: 'A'
   })
-  expect(root.nodes[0].value).toEqual('black')
-  expect(root.nodes[0].important).toBe(true)
-  expect(root.nodes[1].value).toEqual('white')
-  expect(root.nodes[1].important).toBe(true)
-  expect(root.nodes[2].important).not.toBeDefined()
+  equal(root.nodes[0].value, 'black')
+  is(root.nodes[0].important, true)
+  equal(root.nodes[1].value, 'white')
+  is(root.nodes[1].important, true)
+  type(root.nodes[2].important, 'undefined')
 })
 
-it('converts camelCase', () => {
+test('converts camelCase', () => {
   let root = postcssJS.parse({ zIndex: '1' })
-  expect(root.toString()).toEqual('z-index: 1')
+  equal(root.toString(), 'z-index: 1')
 })
 
-it('converts values to string', () => {
+test('converts values to string', () => {
   let root = postcssJS.parse({ zIndex: 1 })
-  expect(root.first.value).toEqual('1')
+  equal(root.first.value, '1')
 })
 
-it('supports arrays', () => {
+test('supports arrays', () => {
   let root = postcssJS.parse({ color: ['black', 'rgba(0,0,0,0.5)'] })
-  expect(root.toString()).toEqual('color: black;\ncolor: rgba(0,0,0,0.5)')
+  equal(root.toString(), 'color: black;\ncolor: rgba(0,0,0,0.5)')
 })
 
-it('supports arrays in at-rules', () => {
+test('supports arrays in at-rules', () => {
   let root = postcssJS.parse({
     '@font-face': [{ fontFamily: 'A' }, { fontFamily: 'B' }]
   })
-  expect(root.toString()).toEqual(
+  equal(
+    root.toString(),
     '@font-face {\n    font-family: A\n}\n' +
       '@font-face {\n    font-family: B\n}'
   )
 })
 
-it('ignores declarations with null', () => {
+test('ignores declarations with null', () => {
   let root = postcssJS.parse({
     font: undefined,
     color: null,
     background: false
   })
-  expect(root.nodes).toHaveLength(0)
+  equal(root.nodes.length, 0)
 })
 
-it('ignores null and undefined', () => {
+test('ignores null and undefined', () => {
   let root1 = postcssJS.parse(null)
-  expect(root1.toString()).toEqual('')
+  equal(root1.toString(), '')
   let root2 = postcssJS.parse(undefined)
-  expect(root2.toString()).toEqual('')
+  equal(root2.toString(), '')
 })
 
-it('supports prefixes', () => {
+test('supports prefixes', () => {
   let root = postcssJS.parse({ MozA: 'one', msA: 'one' })
-  expect(root.toString()).toEqual('-moz-a: one;\n-ms-a: one')
+  equal(root.toString(), '-moz-a: one;\n-ms-a: one')
 })
 
-it('supports cssFloat', () => {
+test('supports cssFloat', () => {
   let root = postcssJS.parse({ cssFloat: 'left' })
-  expect(root.toString()).toEqual('float: left')
+  equal(root.toString(), 'float: left')
 })
 
-it('adds pixels', () => {
+test('adds pixels', () => {
   let root = postcssJS.parse({ a: 2 })
-  expect(root.toString()).toEqual('a: 2px')
+  equal(root.toString(), 'a: 2px')
 })
 
-it('miss pixels fot zero', () => {
+test('miss pixels fot zero', () => {
   let root = postcssJS.parse({ top: 0 })
-  expect(root.toString()).toEqual('top: 0')
+  equal(root.toString(), 'top: 0')
 })
 
-it('parses rules', () => {
+test('parses rules', () => {
   let root = postcssJS.parse({ 'a, b': { color: 'black' } })
-  expect(root.toString()).toEqual('a, b {\n    color: black\n}')
+  equal(root.toString(), 'a, b {\n    color: black\n}')
 })
 
-it('parses at-rules', () => {
+test('parses at-rules', () => {
   let root = postcssJS.parse({ '@media screen, print': { color: 'black' } })
-  expect(root.toString()).toEqual('@media screen, print {\n    color: black\n}')
+  equal(root.toString(), '@media screen, print {\n    color: black\n}')
 })
 
-it('parses paramless at-rules', () => {
+test('parses paramless at-rules', () => {
   let root = postcssJS.parse({ '@media': { color: 'black' } })
-  expect(root.first.params).toEqual('')
+  equal(root.first.params, '')
 })
 
-it('supports PostCSS syntax API', () => {
+test('supports PostCSS syntax API', () => {
   let result = postcss().process({ color: 'black' }, { parser: postcssJS })
-  expect(result.css).toEqual('color: black')
+  equal(result.css, 'color: black')
 })
 
-it('preseves casing for css variables', () => {
+test('preseves casing for css variables', () => {
   let root = postcssJS.parse({
     '--testVariable0': '0',
     '--test-Variable-1': '1',
     '--test-variable-2': '2'
   })
-  expect(root.toString()).toEqual(
+  equal(
+    root.toString(),
     '--testVariable0: 0;\n--test-Variable-1: 1;\n--test-variable-2: 2'
   )
 })
+
+test.run()
