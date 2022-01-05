@@ -15,7 +15,7 @@
   "license": "MIT",
   "repository": "postcss/postcss-js",
   "scripts": {
-    "test": "jest-ci --coverage && eslint-ci ."
+    "test": "jest --coverage && eslint ."
   },
   "engines": {
     "node": ">=10.0"
@@ -33,42 +33,30 @@
   },
   "dependencies": {
     "camelcase-css": "^2.0.1",
-    "postcss": "^8.1.6"
+    "postcss": "^8.4.5"
   },
   "devDependencies": {
-    "@logux/eslint-config": "^42.2.0",
-    "clean-publish": "^1.1.8",
-    "eslint": "^7.12.1",
-    "eslint-ci": "^1.0.0",
-    "eslint-config-standard": "^16.0.1",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jest": "^24.1.0",
+    "@logux/eslint-config": "^46.1.1",
+    "clean-publish": "^3.4.4",
+    "eslint": "^8.6.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prefer-let": "^1.1.0",
-    "eslint-plugin-prettierx": "^0.14.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-security": "^1.4.0",
-    "eslint-plugin-standard": "^4.0.2",
-    "eslint-plugin-unicorn": "^23.0.0",
-    "husky": "^4.3.0",
-    "jest": "^26.6.3",
-    "jest-ci": "^0.1.1",
-    "jest-cli": "^26.6.3",
-    "lint-staged": "^10.5.1",
-    "postcss-sharec-config": "^0.1.9"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.js": "eslint --fix"
+    "eslint-plugin-prefer-let": "^3.0.1",
+    "eslint-plugin-promise": "^6.0.0",
+    "jest": "^27.4.6"
   },
   "eslintConfig": {
     "extends": "@logux/eslint-config",
     "rules": {
-      "security/detect-unsafe-regex": "off"
+      "no-console": "off"
+    },
+    "globals": {
+      "beforeEach": "readonly",
+      "beforeAll": "readonly",
+      "afterAll": "readonly",
+      "it": "readonly",
+      "expect": "readonly"
     }
   },
   "jest": {
@@ -78,9 +66,5 @@
         "statements": 100
       }
     }
-  },
-  "sharec": {
-    "config": "postcss-sharec-config",
-    "version": "0.1.9"
   }
 }
