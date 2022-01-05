@@ -13,9 +13,9 @@ For example, to use [Stylelint] or [RTLCSS] plugins in your workflow.
        alt="Sponsored by Evil Martians" width="236" height="54">
 </a>
 
-[Stylelint]:         https://github.com/stylelint/stylelint
-[PostCSS]:           https://github.com/postcss/postcss
-[RTLCSS]:            https://github.com/MohammadYounes/rtlcss
+[Stylelint]: https://github.com/stylelint/stylelint
+[PostCSS]:   https://github.com/postcss/postcss
+[RTLCSS]:    https://github.com/MohammadYounes/rtlcss
 
 
 ## Usage
