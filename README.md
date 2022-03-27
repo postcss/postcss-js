@@ -4,7 +4,7 @@
      title="Philosopher’s stone, logo of PostCSS"
      src="https://postcss.org/logo-leftp.svg">
 
-[PostCSS] for for CSS-in-JS and styles in JS objects.
+[PostCSS] for CSS-in-JS and styles in JS objects.
 
 For example, to use [Stylelint] or [RTLCSS] plugins in your workflow.
 
