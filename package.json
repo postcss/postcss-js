@@ -44,16 +44,16 @@
     "camelcase-css": "^2.0.1"
   },
   "devDependencies": {
-    "@logux/eslint-config": "^46.1.1",
-    "c8": "^7.11.0",
-    "clean-publish": "^3.4.5",
-    "eslint": "^8.6.0",
-    "eslint-config-standard": "^16.0.3",
-    "eslint-plugin-import": "^2.25.4",
-    "eslint-plugin-node": "^11.1.0",
+    "@logux/eslint-config": "^47.2.0",
+    "c8": "^7.11.2",
+    "clean-publish": "^4.0.0",
+    "eslint": "^8.14.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.1.0",
     "eslint-plugin-prefer-let": "^3.0.1",
     "eslint-plugin-promise": "^6.0.0",
-    "postcss": "^8.4.5",
+    "postcss": "^8.4.12",
     "uvu": "^0.5.3"
   },
   "prettier": {
@@ -75,6 +75,7 @@
       "**/*.test.*"
     ],
     "lines": 100,
+    "reporter": "lcov",
     "check-coverage": true
   },
   "clean-publish": {
