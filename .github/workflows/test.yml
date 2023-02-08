@@ -4,6 +4,8 @@ on:
     branches:
       - main
   pull_request:
+permissions:
+  contents: read
 jobs:
   full:
     name: Node.js Latest Full
@@ -18,19 +20,18 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 19
           cache: pnpm
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --ignore-scripts
       - name: Run tests
         run: pnpm test
-        env:
-          FORCE_COLOR: 2
   short:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version:
+          - 18
           - 16
           - 14
     name: Node.js ${{ matrix.node-version }} Quick
@@ -50,8 +51,6 @@ jobs:
         run: pnpm install --frozen-lockfile --ignore-scripts
       - name: Run unit tests
         run: pnpm unit
-        env:
-          FORCE_COLOR: 2
   old:
     runs-on: ubuntu-latest
     strategy:
@@ -76,5 +75,3 @@ jobs:
         run: pnpm install --frozen-lockfile --ignore-scripts
       - name: Run unit tests
         run: pnpm unit
-        env:
-          FORCE_COLOR: 2
