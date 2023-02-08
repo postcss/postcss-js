@@ -1,6 +1,6 @@
 {
   "name": "postcss-js",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "PostCSS for CSS-in-JS and styles in JS objects",
   "keywords": [
     "postcss",
