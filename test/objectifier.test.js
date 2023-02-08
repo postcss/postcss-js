@@ -40,6 +40,21 @@ test('converts declarations to camel case', () => {
   })
 })
 
+test('preserves case for sass exported variables', () => {
+  let root = parse(
+    ':export { caseSensitiveOne: 1px }' +
+      ':export { caseSensitiveTwo: 2px }' +
+      ':export { caseSensitiveThree: 3px }'
+  )
+  equal(postcssJS.objectify(root), {
+    ':export': {
+      caseSensitiveOne: '1px',
+      caseSensitiveTwo: '2px',
+      caseSensitiveThree: '3px'
+    }
+  })
+})
+
 test('maintains !important declarations', () => {
   let root = parse('margin-bottom: 0 !important')
   equal(postcssJS.objectify(root), {
