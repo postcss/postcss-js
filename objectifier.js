@@ -60,6 +60,8 @@ function process(node) {
     } else if (child.type === 'decl') {
       if (child.prop[0] === '-' && child.prop[1] === '-') {
         name = child.prop
+      } else if (child.parent && child.parent.selector === ':export') {
+        name = child.prop
       } else {
         name = camelcase(child.prop)
       }
