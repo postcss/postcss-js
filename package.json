@@ -15,8 +15,10 @@
   "license": "MIT",
   "repository": "postcss/postcss-js",
   "scripts": {
-    "unit": "uvu test \"\\.test\\.js$\"",
-    "test": "c8 pnpm unit && eslint ."
+    "unit": "uvu . '\\.test\\.js$'",
+    "test:coverage": "c8 pnpm unit",
+    "test:lint": "eslint .",
+    "test": "pnpm run /^test:/"
   },
   "engines": {
     "node": "^12 || ^14 || >= 16"
@@ -50,16 +52,18 @@
     "camelcase-css": "^2.0.1"
   },
   "devDependencies": {
-    "@logux/eslint-config": "^49.0.0",
-    "c8": "^7.13.0",
-    "clean-publish": "^4.1.1",
-    "eslint": "^8.36.0",
-    "eslint-config-standard": "^17.0.0",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-n": "^15.6.1",
+    "@logux/eslint-config": "^52.0.1",
+    "c8": "^8.0.1",
+    "clean-publish": "^4.2.0",
+    "eslint": "^8.51.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-n": "^16.1.0",
+    "eslint-plugin-node-import": "^1.0.4",
+    "eslint-plugin-perfectionist": "^2.1.0",
     "eslint-plugin-prefer-let": "^3.0.1",
     "eslint-plugin-promise": "^6.1.1",
-    "postcss": "^8.4.21",
+    "postcss": "^8.4.31",
     "uvu": "^0.5.6"
   },
   "prettier": {
@@ -73,6 +77,7 @@
   "eslintConfig": {
     "extends": "@logux/eslint-config",
     "rules": {
+      "perfectionist/sort-objects": "off",
       "no-console": "off"
     }
   },
