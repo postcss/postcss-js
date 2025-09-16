@@ -33,9 +33,10 @@ function atRule(node) {
   }
 }
 
-function process(node, stringifyImportant) {
+function process(node, options = {}) {
   let name
   let result = {}
+  let { stringifyImportant } = options;
 
   node.each(child => {
     if (child.type === 'atrule') {

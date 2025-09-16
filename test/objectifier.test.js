@@ -168,7 +168,7 @@ test('keeps last important in merge', () => {
 
 test('prioritizes important in merge', () => {
   let root = parse('a { height: 1px !important; };a { height: 2px }')
-  equal(postcssJS.objectify(root, true), {
+  equal(postcssJS.objectify(root, { stringifyImportant: true }), {
     a: {
       height: "1px !important"
     }
@@ -177,7 +177,7 @@ test('prioritizes important in merge', () => {
 
 test('keeps last important with priority', () => {
   let root = parse('a { height: 1px !important; };a { height: 2px !important; }')
-  equal(postcssJS.objectify(root, true), {
+  equal(postcssJS.objectify(root, { stringifyImportant: true }), {
     a: {
       height: "2px !important"
     }
