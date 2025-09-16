@@ -1,6 +1,6 @@
 {
   "name": "postcss-js",
-  "version": "4.1.0",
+  "version": "5.0.0",
   "description": "PostCSS for CSS-in-JS and styles in JS objects",
   "keywords": [
     "postcss",
@@ -21,7 +21,7 @@
     "test": "pnpm run /^test:/"
   },
   "engines": {
-    "node": "^12 || ^14 || >= 16"
+    "node": "^20 || ^22 || >= 24"
   },
   "exports": {
     ".": {

@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.0.0
+* Removed Node.js 12, 14, 16, 18 support.
+
 ## 4.1.0
 * Added `stringifyImportant` option (by @Liang5757).
 
