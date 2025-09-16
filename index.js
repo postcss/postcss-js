@@ -1,6 +1,6 @@
+let async = require('./async')
 let objectify = require('./objectifier')
 let parse = require('./parser')
-let async = require('./async')
 let sync = require('./sync')
 
 module.exports = {

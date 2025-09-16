@@ -1,7 +1,7 @@
 let postcss = require('postcss')
 
-let processResult = require('./process-result')
 let parse = require('./parser')
+let processResult = require('./process-result')
 
 module.exports = function (plugins) {
   let processor = postcss(plugins)

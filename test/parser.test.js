@@ -1,6 +1,6 @@
-let { equal, type, is } = require('uvu/assert')
-let { test } = require('uvu')
 let postcss = require('postcss')
+let { test } = require('uvu')
+let { equal, type, is } = require('uvu/assert')
 
 let postcssJS = require('../')
 

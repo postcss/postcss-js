@@ -69,7 +69,7 @@ function atRule(parent, parts, value) {
 }
 
 function parse(obj, parent) {
-  let name, value, node
+  let name, node, value
   for (name in obj) {
     value = obj[name]
     if (value === null || typeof value === 'undefined') {

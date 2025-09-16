@@ -1,6 +1,6 @@
-let { equal } = require('uvu/assert')
 let { parse } = require('postcss')
 let { test } = require('uvu')
+let { equal } = require('uvu/assert')
 
 let postcssJS = require('../')
 

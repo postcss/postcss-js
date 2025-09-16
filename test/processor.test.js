@@ -1,5 +1,5 @@
-let { equal } = require('uvu/assert')
 let { test } = require('uvu')
+let { equal } = require('uvu/assert')
 
 let postcssJS = require('../')
 
@@ -19,7 +19,7 @@ let warner = () => ({
 })
 warner.postcss = true
 
-let warnings, origin
+let origin, warnings
 
 test.before(() => {
   origin = console.warn
