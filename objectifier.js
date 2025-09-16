@@ -33,7 +33,7 @@ function atRule(node) {
   }
 }
 
-function process(node) {
+function process(node, stringifyImportant) {
   let name
   let result = {}
 
@@ -52,7 +52,14 @@ function process(node) {
       let body = process(child)
       if (result[child.selector]) {
         for (let i in body) {
-          result[child.selector][i] = body[i]
+          let object = result[child.selector];
+          if (stringifyImportant && object[i] && object[i].endsWith('!important')) {
+            if (body[i].endsWith('!important')) {
+              object[i] = body[i]
+            }
+          } else {
+            object[i] = body[i]
+          }
         }
       } else {
         result[child.selector] = body

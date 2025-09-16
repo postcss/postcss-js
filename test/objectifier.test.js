@@ -147,4 +147,42 @@ test('converts unitless value to number instead of string', () => {
   })
 })
 
+
+test('merges rules ignoring important', () => {
+  let root = parse('a { height: 1px !important; };a { height: 2px }')
+  equal(postcssJS.objectify(root), {
+    a: {
+      height: "2px"
+    }
+  })
+})
+
+test('keeps last important in merge', () => {
+  let root = parse('a { height: 1px !important; };a { height: 2px !important; }')
+  equal(postcssJS.objectify(root), {
+    a: {
+      height: "2px !important"
+    }
+  })
+})
+
+test('prioritizes important in merge', () => {
+  let root = parse('a { height: 1px !important; };a { height: 2px }')
+  equal(postcssJS.objectify(root, true), {
+    a: {
+      height: "1px !important"
+    }
+  })
+})
+
+test('keeps last important with priority', () => {
+  let root = parse('a { height: 1px !important; };a { height: 2px !important; }')
+  equal(postcssJS.objectify(root, true), {
+    a: {
+      height: "2px !important"
+    }
+  })
+})
+
+
 test.run()
