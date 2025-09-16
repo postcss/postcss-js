@@ -121,7 +121,7 @@ postcss().process(obj, { parser: postcssJs })
 ```
 
 
-### `objectify(root): object`
+### `objectify(root, stringifyImportant): object`
 
 Convert PostCSS `Root` instance to CSS-in-JS style object.
 
