@@ -33,9 +33,10 @@ function atRule(node) {
   }
 }
 
-function process(node) {
+function process(node, options = {}) {
   let name
   let result = {}
+  let { stringifyImportant } = options;
 
   node.each(child => {
     if (child.type === 'atrule') {
@@ -52,7 +53,14 @@ function process(node) {
       let body = process(child)
       if (result[child.selector]) {
         for (let i in body) {
-          result[child.selector][i] = body[i]
+          let object = result[child.selector];
+          if (stringifyImportant && object[i] && object[i].endsWith('!important')) {
+            if (body[i].endsWith('!important')) {
+              object[i] = body[i]
+            }
+          } else {
+            object[i] = body[i]
+          }
         }
       } else {
         result[child.selector] = body
