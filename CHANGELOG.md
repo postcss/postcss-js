@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 4.1.0
+* Added `stringifyImportant` option (by @Liang5757).
+
 ## 4.0.1
 * Fixed `:export` case sensitivity (by Iskren Slavov).
 
