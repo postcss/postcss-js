@@ -54,8 +54,8 @@ function process(node, options = {}) {
       if (result[child.selector]) {
         for (let i in body) {
           let object = result[child.selector];
-          if (stringifyImportant && object[i] && object[i].endsWith('!important')) {
-            if (body[i].endsWith('!important')) {
+          if (stringifyImportant && typeof object[i] === "string" && object[i].endsWith('!important')) {
+            if (typeof body[i] === "string" && body[i].endsWith('!important')) {
               object[i] = body[i]
             }
           } else {
