@@ -184,5 +184,22 @@ test('keeps last important with priority', () => {
   })
 })
 
+test('keeps last important with priority', () => {
+  let root = parse('a { vertical-align: 2px center; };a { vertical-align: 1px center; }')
+  equal(postcssJS.objectify(root, { stringifyImportant: true }), {
+    a: {
+      'verticalAlign': "1px center"
+    }
+  })
+})
+
+test('keeps last important with priority', () => {
+  let root = parse('a { vertical-align: 2px center !important; };a { vertical-align: 1px center; }')
+  equal(postcssJS.objectify(root, { stringifyImportant: true }), {
+    a: {
+      'verticalAlign': "2px center !important"
+    }
+  })
+})
 
 test.run()
