@@ -27,11 +27,28 @@ let UNITLESS = {
   'stroke-width': true
 }
 
+let { fromCharCode } = String;
+
 function dashify(str) {
-  return str
-    .replace(/([A-Z])/g, '-$1')
-    .replace(/^ms-/, '-ms-')
-    .toLowerCase()
+  let result = '';
+  let i = 0;
+  let len = str.length;
+  let code;
+
+  if (str[0] === 'm' && str[1] === 's') result += fromCharCode(45); // '-'
+
+  for (; i < len; i++) {
+    code = str[i].charCodeAt(0);
+
+    if (code > 64 && code < 91) {
+      result += fromCharCode(45) + fromCharCode(code + 32);
+      continue;
+    }
+
+    result += fromCharCode(code);
+  }
+
+  return result;
 }
 
 function decl(parent, name, value) {
