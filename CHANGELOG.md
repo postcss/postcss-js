@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.0.2
+* Made dashify much faster (by @hyperz111).
+
 ## 5.0.1
 * Fixed multiple values with `stringifyImportant` option (by @Liang5757).
 
