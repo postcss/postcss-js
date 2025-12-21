@@ -48,9 +48,6 @@
   "peerDependencies": {
     "postcss": "^8.4.21"
   },
-  "dependencies": {
-    "camelcase-css": "^2.0.1"
-  },
   "devDependencies": {
     "@logux/eslint-config": "^57.0.0",
     "actions-up": "^1.7.0",
