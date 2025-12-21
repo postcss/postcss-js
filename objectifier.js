@@ -1,5 +1,3 @@
-let camelcase = require('camelcase-css')
-
 let UNITLESS = {
   boxFlex: true,
   boxFlexGroup: true,
@@ -31,6 +29,34 @@ function atRule(node) {
   } else {
     return process(node)
   }
+}
+
+// From https://github.com/hyperz111/fast-camelcase-css
+function camelcase(property) {
+  property = property.toLowerCase()
+
+  if (property === 'float') return 'cssFloat'
+
+  let index = property.indexOf('-')
+  // Early return if don't have a dash
+  if (index === -1) return property
+
+  // Microsoft vendor-prefixes are uniquely cased
+  if (property.startsWith('-ms-')) {
+    property = property.substring(1)
+    index = property.indexOf('-')
+  }
+
+  let cursor = 0
+  let result = ''
+
+  do {
+    result += property.substring(cursor, index) + property[index + 1].toUpperCase()
+    cursor = index + 2
+    index = property.indexOf('-', cursor)
+  } while (index !== -1)
+
+  return result + property.substring(cursor)
 }
 
 function process(node, options = {}) {
