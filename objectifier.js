@@ -24,11 +24,7 @@ let UNITLESS = {
 }
 
 function atRule(node) {
-  if (typeof node.nodes === 'undefined') {
-    return true
-  } else {
-    return process(node)
-  }
+  return node.nodes === undefined ? true : process(node)
 }
 
 // From https://github.com/hyperz111/fast-camelcase-css
@@ -62,7 +58,6 @@ function camelcase(property) {
 function process(node, options = {}) {
   let name
   let result = {}
-  let { stringifyImportant } = options
 
   node.each(child => {
     if (child.type === 'atrule') {
@@ -81,13 +76,11 @@ function process(node, options = {}) {
         for (let i in body) {
           let object = result[child.selector]
           if (
-            stringifyImportant &&
+            options.stringifyImportant &&
             typeof object[i] === 'string' &&
             object[i].endsWith('!important')
           ) {
-            if (typeof body[i] === 'string' && body[i].endsWith('!important')) {
-              object[i] = body[i]
-            }
+            if (typeof body[i] === 'string' && body[i].endsWith('!important')) object[i] = body[i]
           } else {
             object[i] = body[i]
           }
@@ -96,7 +89,7 @@ function process(node, options = {}) {
         result[child.selector] = body
       }
     } else if (child.type === 'decl') {
-      if (child.prop[0] === '-' && child.prop[1] === '-') {
+      if (child.startsWith('--')) {
         name = child.prop
       } else if (child.parent && child.parent.selector === ':export') {
         name = child.prop
@@ -104,9 +97,7 @@ function process(node, options = {}) {
         name = camelcase(child.prop)
       }
       let value = child.value
-      if (!isNaN(child.value) && UNITLESS[name]) {
-        value = parseFloat(child.value)
-      }
+      if (!isNaN(child.value) && UNITLESS[name]) value = parseFloat(child.value)
       if (child.important) value += ' !important'
       if (typeof result[name] === 'undefined') {
         result[name] = value
