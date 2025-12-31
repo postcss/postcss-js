@@ -39,7 +39,7 @@ function camelcase(property) {
 
   // Microsoft vendor-prefixes are uniquely cased
   if (property.startsWith('-ms-')) {
-    property = property.substring(1)
+    property = property.slice(1)
     index = property.indexOf('-')
   }
 
@@ -47,12 +47,12 @@ function camelcase(property) {
   let result = ''
 
   do {
-    result += property.substring(cursor, index) + property[index + 1].toUpperCase()
+    result += property.slice(cursor, index) + property[index + 1].toUpperCase()
     cursor = index + 2
     index = property.indexOf('-', cursor)
   } while (index !== -1)
 
-  return result + property.substring(cursor)
+  return result + property.slice(cursor)
 }
 
 function process(node, options = {}) {
@@ -80,7 +80,9 @@ function process(node, options = {}) {
             typeof object[i] === 'string' &&
             object[i].endsWith('!important')
           ) {
-            if (typeof body[i] === 'string' && body[i].endsWith('!important')) object[i] = body[i]
+            if (typeof body[i] === 'string' && body[i].endsWith('!important')) {
+              object[i] = body[i]
+            }
           } else {
             object[i] = body[i]
           }
