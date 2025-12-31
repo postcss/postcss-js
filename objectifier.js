@@ -63,7 +63,7 @@ function process(node, options = {}) {
     if (child.type === 'atrule') {
       name = '@' + child.name
       if (child.params) name += ' ' + child.params
-      if (typeof result[name] === 'undefined') {
+      if (result[name] === undefined) {
         result[name] = atRule(child)
       } else if (Array.isArray(result[name])) {
         result[name].push(atRule(child))
@@ -101,7 +101,7 @@ function process(node, options = {}) {
       let value = child.value
       if (!isNaN(child.value) && UNITLESS[name]) value = parseFloat(child.value)
       if (child.important) value += ' !important'
-      if (typeof result[name] === 'undefined') {
+      if (result[name] === undefined) {
         result[name] = value
       } else if (Array.isArray(result[name])) {
         result[name].push(value)
