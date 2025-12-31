@@ -27,28 +27,30 @@ let UNITLESS = {
   'stroke-width': true
 }
 
-let { fromCharCode } = String;
+let { fromCharCode } = String
 
 function dashify(str) {
-  let result = '';
-  let i = 0;
-  let len = str.length;
-  let code;
+  if (str === 'cssFloat') return 'float'
 
-  if (str[0] === 'm' && str[1] === 's') result += fromCharCode(45); // '-'
+  let result = ''
+  let i = 0
+  let len = str.length
+  let code
+
+  if (str.startsWith('ms')) result += fromCharCode(45) // '-'
 
   for (; i < len; i++) {
-    code = str[i].charCodeAt(0);
+    code = str[i].charCodeAt(0)
 
     if (code > 64 && code < 91) {
-      result += fromCharCode(45) + fromCharCode(code + 32);
-      continue;
+      result += fromCharCode(45) + fromCharCode(code + 32)
+      continue
     }
 
-    result += fromCharCode(code);
+    result += fromCharCode(code)
   }
 
-  return result;
+  return result
 }
 
 function decl(parent, name, value) {
@@ -65,8 +67,6 @@ function decl(parent, name, value) {
       value += 'px'
     }
   }
-
-  if (name === 'css-float') name = 'float'
 
   if (IMPORTANT.test(value)) {
     value = value.replace(IMPORTANT, '')
@@ -89,7 +89,7 @@ function parse(obj, parent) {
   let name, node, value
   for (name in obj) {
     value = obj[name]
-    if (value === null || typeof value === 'undefined') {
+    if (value == null) {
       continue
     } else if (name[0] === '@') {
       let parts = name.match(/@(\S+)(\s+([\W\w]*)\s*)?/)
