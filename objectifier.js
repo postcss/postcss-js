@@ -91,7 +91,7 @@ function process(node, options = {}) {
         result[child.selector] = body
       }
     } else if (child.type === 'decl') {
-      if (child.startsWith('--')) {
+      if (child.prop.startsWith('--')) {
         name = child.prop
       } else if (child.parent && child.parent.selector === ':export') {
         name = child.prop
