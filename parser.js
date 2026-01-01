@@ -62,7 +62,7 @@ function decl(parent, name, value) {
 
   if (typeof value === 'number') {
     value = value.toString()
-    if (value !== "0" && !UNITLESS[name]) value += 'px'
+    if (value !== '0' && !UNITLESS[name]) value += 'px'
   }
 
   if (IMPORTANT.test(value)) {
