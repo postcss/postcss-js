@@ -24,11 +24,7 @@ let UNITLESS = {
 }
 
 function atRule(node) {
-  if (typeof node.nodes === 'undefined') {
-    return true
-  } else {
-    return process(node)
-  }
+  return node.nodes === undefined ? true : process(node)
 }
 
 // From https://github.com/hyperz111/fast-camelcase-css
@@ -43,7 +39,7 @@ function camelcase(property) {
 
   // Microsoft vendor-prefixes are uniquely cased
   if (property.startsWith('-ms-')) {
-    property = property.substring(1)
+    property = property.slice(1)
     index = property.indexOf('-')
   }
 
@@ -51,24 +47,23 @@ function camelcase(property) {
   let result = ''
 
   do {
-    result += property.substring(cursor, index) + property[index + 1].toUpperCase()
+    result += property.slice(cursor, index) + property[index + 1].toUpperCase()
     cursor = index + 2
     index = property.indexOf('-', cursor)
   } while (index !== -1)
 
-  return result + property.substring(cursor)
+  return result + property.slice(cursor)
 }
 
 function process(node, options = {}) {
   let name
   let result = {}
-  let { stringifyImportant } = options
 
   node.each(child => {
     if (child.type === 'atrule') {
       name = '@' + child.name
       if (child.params) name += ' ' + child.params
-      if (typeof result[name] === 'undefined') {
+      if (result[name] === undefined) {
         result[name] = atRule(child)
       } else if (Array.isArray(result[name])) {
         result[name].push(atRule(child))
@@ -81,7 +76,7 @@ function process(node, options = {}) {
         for (let i in body) {
           let object = result[child.selector]
           if (
-            stringifyImportant &&
+            options.stringifyImportant &&
             typeof object[i] === 'string' &&
             object[i].endsWith('!important')
           ) {
@@ -96,7 +91,7 @@ function process(node, options = {}) {
         result[child.selector] = body
       }
     } else if (child.type === 'decl') {
-      if (child.prop[0] === '-' && child.prop[1] === '-') {
+      if (child.prop.startsWith('--')) {
         name = child.prop
       } else if (child.parent && child.parent.selector === ':export') {
         name = child.prop
@@ -104,11 +99,9 @@ function process(node, options = {}) {
         name = camelcase(child.prop)
       }
       let value = child.value
-      if (!isNaN(child.value) && UNITLESS[name]) {
-        value = parseFloat(child.value)
-      }
+      if (!isNaN(child.value) && UNITLESS[name]) value = parseFloat(child.value)
       if (child.important) value += ' !important'
-      if (typeof result[name] === 'undefined') {
+      if (result[name] === undefined) {
         result[name] = value
       } else if (Array.isArray(result[name])) {
         result[name].push(value)
