@@ -1,5 +1,7 @@
-import { objectifiy } from './index.js'
+import { ObjectifyOptions, objectifiy } from './index.js'
 
-declare const objectifier: typeof objectifiy
+declare namespace objectifier {
+  export { ObjectifyOptions, objectifiy as default }
+}
 
 export = objectifier
