@@ -3,7 +3,7 @@ export {
   ObjectifyOptions,
   sync,
   async,
-  objectifiy,
+  objectify,
   parse,
   default
 } from './index.js'

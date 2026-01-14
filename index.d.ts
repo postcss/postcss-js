@@ -43,14 +43,14 @@ declare namespace postcssJs {
    * @param root The root to convert
    * @returns CSS-in-JS object
    */
-  function objectifiy(root: Root, options?: ObjectifyOptions): CssInJs
+  function objectify(root: Root, options?: ObjectifyOptions): CssInJs
 
   export {
     CssInJs,
     ObjectifyOptions,
     sync,
     async,
-    objectifiy,
+    objectify,
     parse,
     postcssJs as default
   }
