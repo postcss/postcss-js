@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.1.0
+* Added types (by @hyperz111 and @MysteryBlokHed).
+
 ## 5.0.3
 * Reduced dependencies and speed-up `objectifier` (by @hyperz111).
 
