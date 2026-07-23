@@ -8,15 +8,15 @@
 
 For example, to use [Stylelint] or [RTLCSS] plugins in your workflow.
 
-<a href="https://evilmartians.com/?utm_source=postcss-js">
-  <img src="https://evilmartians.com/badges/sponsored-by-evil-martians.svg"
-       alt="Sponsored by Evil Martians" width="236" height="54">
-</a>
+---
+
+<img src="https://cdn.evilmartians.com/badges/logo-no-label.svg" alt="" width="22" height="16" />  PostCSS Safe Parser is built by <b><a href="https://evilmartians.com/">Evil Martians</a></b>, an American design and engineering consultancy for <b>developer tools, AI, and cybersecurity startups</b>.
+
+---
 
 [Stylelint]: https://github.com/stylelint/stylelint
-[PostCSS]:   https://github.com/postcss/postcss
-[RTLCSS]:    https://github.com/MohammadYounes/rtlcss
-
+[PostCSS]: https://github.com/postcss/postcss
+[RTLCSS]: https://github.com/MohammadYounes/rtlcss
 
 ## Usage
 
@@ -26,20 +26,19 @@ For example, to use [Stylelint] or [RTLCSS] plugins in your workflow.
 const postcssJs = require('postcss-js')
 const autoprefixer = require('autoprefixer')
 
-const prefixer = postcssJs.sync([ autoprefixer ])
+const prefixer = postcssJs.sync([autoprefixer])
 
 const style = prefixer({
   userSelect: 'none'
 })
 
 style //=> {
-      //     WebkitUserSelect: 'none',
-      //        MozUserSelect: 'none',
-      //         msUserSelect: 'none',
-      //           userSelect: 'none'
-      //   }
+//     WebkitUserSelect: 'none',
+//        MozUserSelect: 'none',
+//         msUserSelect: 'none',
+//           userSelect: 'none'
+//   }
 ```
-
 
 ### Compile CSS-in-JS to CSS
 
@@ -48,18 +47,19 @@ const postcss = require('postcss')
 const postcssJs = require('postcss-js')
 
 const style = {
-  top: 10,
+  'top': 10,
   '&:hover': {
     top: 5
   }
-};
+}
 
-postcss().process(style, { parser: postcssJs }).then( (result) => {
-  result.css //=> top: 10px;
-             //   &:hover { top: 5px; }
-})
+postcss()
+  .process(style, { parser: postcssJs })
+  .then(result => {
+    result.css //=> top: 10px;
+    //   &:hover { top: 5px; }
+  })
 ```
-
 
 ### Compile CSS to CSS-in-JS
 
@@ -67,18 +67,18 @@ postcss().process(style, { parser: postcssJs }).then( (result) => {
 const postcss = require('postcss')
 const postcssJs = require('postcss-js')
 
-const css  = '--text-color: #DD3A0A; @media screen { z-index: 1; color: var(--text-color) }'
+const css =
+  '--text-color: #DD3A0A; @media screen { z-index: 1; color: var(--text-color) }'
 const root = postcss.parse(css)
 
 postcssJs.objectify(root) //=> {
-                          //     '--text-color': '#DD3A0A',
-                          //     '@media screen': {
-                          //       zIndex: '1',
-                          //       color: 'var(--text-color)'
-                          //     }
-                          //   }
+//     '--text-color': '#DD3A0A',
+//     '@media screen': {
+//       zIndex: '1',
+//       color: 'var(--text-color)'
+//     }
+//   }
 ```
-
 
 ## API
 
@@ -89,13 +89,11 @@ support.
 
 Processor is just a function, which takes one style object and return other.
 
-
 ### `async(plugins): function`
 
 Same as `sync`, but also support async plugins.
 
 Returned processor will return Promise.
-
 
 ### `parse(obj): Root`
 
@@ -120,16 +118,13 @@ This methods use Custom Syntax name convention, so you can use it like this:
 postcss().process(obj, { parser: postcssJs })
 ```
 
-
 ### `objectify(root): object`
 
 Convert PostCSS `Root` instance to CSS-in-JS style object.
 
-
 ## Troubleshoot
 
 Webpack may need some extra config for some PostCSS plugins.
-
 
 ### `Module parse failed`
 
@@ -142,7 +137,7 @@ So, please install this loader and add to webpack config:
 loaders: [
   {
     test: /\.json$/,
-    loader: "json-loader"
+    loader: 'json-loader'
   }
 ]
 ```
