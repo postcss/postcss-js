@@ -55,6 +55,28 @@ function camelcase(property) {
   return result + property.slice(cursor)
 }
 
+function isObject(value) {
+  return typeof value === 'object' && !Array.isArray(value)
+}
+
+function merge(object, body, options) {
+  for (let i in body) {
+    if (
+      options.stringifyImportant &&
+      typeof object[i] === 'string' &&
+      object[i].endsWith('!important')
+    ) {
+      if (typeof body[i] === 'string' && body[i].endsWith('!important')) {
+        object[i] = body[i]
+      }
+    } else if (isObject(object[i]) && isObject(body[i])) {
+      merge(object[i], body[i], options)
+    } else {
+      object[i] = body[i]
+    }
+  }
+}
+
 function process(node, options = {}) {
   let name
   let result = {}
@@ -73,20 +95,7 @@ function process(node, options = {}) {
     } else if (child.type === 'rule') {
       let body = process(child)
       if (result[child.selector]) {
-        for (let i in body) {
-          let object = result[child.selector]
-          if (
-            options.stringifyImportant &&
-            typeof object[i] === 'string' &&
-            object[i].endsWith('!important')
-          ) {
-            if (typeof body[i] === 'string' && body[i].endsWith('!important')) {
-              object[i] = body[i]
-            }
-          } else {
-            object[i] = body[i]
-          }
-        }
+        merge(result[child.selector], body, options)
       } else {
         result[child.selector] = body
       }
