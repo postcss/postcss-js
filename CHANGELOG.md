@@ -2,6 +2,12 @@
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.1.1
+
+- Fixed merging nested rules and at-rules in `objectify` (by @trackoor).
+- Fixed `postcss-js/objectifier` types.
+- Added npm provenance.
+
 ## 5.1.0
 
 - Added types (by @hyperz111 and @MysteryBlokHed).
