@@ -1,82 +1,107 @@
 # Change Log
+
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 5.1.0
-* Added types (by @hyperz111 and @MysteryBlokHed).
+
+- Added types (by @hyperz111 and @MysteryBlokHed).
 
 ## 5.0.3
-* Reduced dependencies and speed-up `objectifier` (by @hyperz111).
+
+- Reduced dependencies and speed-up `objectifier` (by @hyperz111).
 
 ## 5.0.2
-* Made dashify much faster (by @hyperz111).
+
+- Made dashify much faster (by @hyperz111).
 
 ## 5.0.1
-* Fixed multiple values with `stringifyImportant` option (by @Liang5757).
+
+- Fixed multiple values with `stringifyImportant` option (by @Liang5757).
 
 ## 5.0.0
-* Removed Node.js 12, 14, 16, 18 support.
+
+- Removed Node.js 12, 14, 16, 18 support.
 
 ## 4.1.0
-* Added `stringifyImportant` option (by @Liang5757).
+
+- Added `stringifyImportant` option (by @Liang5757).
 
 ## 4.0.1
-* Fixed `:export` case sensitivity (by Iskren Slavov).
+
+- Fixed `:export` case sensitivity (by Iskren Slavov).
 
 ## 4.0
-* Removed Node.js 10 support.
-* Moved `postcss` to `peerDependencies`.
-* Added case preserving of CSS Custom Properties (by Jordan Pittman).
-* Fixed `package.exports`.
+
+- Removed Node.js 10 support.
+- Moved `postcss` to `peerDependencies`.
+- Added case preserving of CSS Custom Properties (by Jordan Pittman).
+- Fixed `package.exports`.
 
 ## 3.0.3
-* Reverted `package.exports` Node.js 15 fix.
+
+- Reverted `package.exports` Node.js 15 fix.
 
 ## 3.0.2
-* Fixed Node.js 15 warning.
+
+- Fixed Node.js 15 warning.
 
 ## 3.0.1
-* Added funding links.
+
+- Added funding links.
 
 ## 3.0
-* Removed support for Node.js 6.x, 8.x, 11.x, and 13.x versions.
-* Moved to PostCSS 8.0.
-* Added ES modules support.
-* Avoid stringification of unitless values (by Rishabh Rathod).
+
+- Removed support for Node.js 6.x, 8.x, 11.x, and 13.x versions.
+- Moved to PostCSS 8.0.
+- Added ES modules support.
+- Avoid stringification of unitless values (by Rishabh Rathod).
 
 ## 2.0.3
-* Fix `from` option warning.
+
+- Fix `from` option warning.
 
 ## 2.0.2
-* Fix `!important` support (by Adam Wathan).
+
+- Fix `!important` support (by Adam Wathan).
 
 ## 2.0.1
-* Improve objectifier performance.
-* Do not change source `Root` in objectifier.
+
+- Improve objectifier performance.
+- Do not change source `Root` in objectifier.
 
 ## 2.0.0
-* Remove Node.js 9 and Node.js 4 support.
-* Use PostCSS 7.0.
+
+- Remove Node.js 9 and Node.js 4 support.
+- Use PostCSS 7.0.
 
 ## 1.0.1
-* Ignore nodes with `undefined` value.
+
+- Ignore nodes with `undefined` value.
 
 ## 1.0
-* Use PostCSS 6.0.
+
+- Use PostCSS 6.0.
 
 ## 0.3
-* Add support for at-rules with same name (like `@font-face`).
+
+- Add support for at-rules with same name (like `@font-face`).
 
 ## 0.2
-* Add `!important` support (by Dan Lynch).
+
+- Add `!important` support (by Dan Lynch).
 
 ## 0.1.3
-* Fix rules merge with at-rules.
+
+- Fix rules merge with at-rules.
 
 ## 0.1.2
-* Add `cssFloat` alias support.
+
+- Add `cssFloat` alias support.
 
 ## 0.1.1
-* Fix losing rules in parser on same selector (by Bogdan Chadkin).
+
+- Fix losing rules in parser on same selector (by Bogdan Chadkin).
 
 ## 0.1
-* Initial release.
+
+- Initial release.

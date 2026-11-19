@@ -1,5 +1,5 @@
-import { async as _async } from './index.js'
+import type { async as _async } from './index.js'
 
-declare const async: typeof _async
+declare let async: typeof _async
 
 export = async

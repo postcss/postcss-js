@@ -1,4 +1,4 @@
-let UNITLESS = {
+const UNITLESS = {
   boxFlex: true,
   boxFlexGroup: true,
   columnCount: true,

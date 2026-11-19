@@ -1,5 +1,5 @@
-import { sync as _sync } from './index.js'
+import type { sync as _sync } from './index.js'
 
-declare const sync: typeof _sync
+declare let sync: typeof _sync
 
 export = sync

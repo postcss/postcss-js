@@ -1,8 +1,9 @@
 // From DefinitelyTyped by Adam Thompson-Sharpe (https://github.com/MysteryBlokHed) with some modifications.
-import { AcceptedPlugin, Root } from 'postcss'
+import type { AcceptedPlugin, Root } from 'postcss'
 
 declare namespace postcssJs {
   /** CSS-in-JS object */
+  // oxlint-disable-next-line typescript/no-explicit-any
   type CssInJs = Record<string, any>
 
   /**

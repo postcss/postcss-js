@@ -1,5 +1,5 @@
-import { parse } from './index.js'
+import type { parse } from './index.js'
 
-declare const parser: typeof parse
+declare let parser: typeof parse
 
 export = parser

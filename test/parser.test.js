@@ -1,6 +1,6 @@
+let { equal } = require('node:assert/strict')
+let { test } = require('node:test')
 let postcss = require('postcss')
-let { test } = require('uvu')
-let { equal, type, is } = require('uvu/assert')
 
 let postcssJS = require('../')
 
@@ -21,10 +21,10 @@ test('parses declarations with !important', () => {
     fontFamily: 'A'
   })
   equal(root.nodes[0].value, 'black')
-  is(root.nodes[0].important, true)
+  equal(root.nodes[0].important, true)
   equal(root.nodes[1].value, 'white')
-  is(root.nodes[1].important, true)
-  type(root.nodes[2].important, 'undefined')
+  equal(root.nodes[1].important, true)
+  equal(root.nodes[2].important, undefined)
 })
 
 test('converts camelCase', () => {
@@ -120,5 +120,3 @@ test('preseves casing for css variables', () => {
     '--testVariable0: 0;\n--test-Variable-1: 1;\n--test-variable-2: 2'
   )
 })
-
-test.run()

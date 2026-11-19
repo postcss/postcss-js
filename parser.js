@@ -1,8 +1,8 @@
 let postcss = require('postcss')
 
-let IMPORTANT = /\s*!important\s*$/i
+const IMPORTANT = /\s*!important\s*$/i
 
-let UNITLESS = {
+const UNITLESS = {
   'box-flex': true,
   'box-flex-group': true,
   'column-count': true,
