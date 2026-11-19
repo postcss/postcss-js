@@ -202,4 +202,29 @@ test('keeps last important with priority', () => {
   })
 })
 
+test('merges nested rules in merged rules', () => {
+  let root = parse(
+    '.btn { color: red; &:hover { color: blue; padding: 1px } } ' +
+      '.btn { &:hover { margin: 0 } }'
+  )
+  equal(postcssJS.objectify(root), {
+    '.btn': {
+      'color': 'red',
+      '&:hover': { color: 'blue', padding: '1px', margin: '0' }
+    }
+  })
+})
+
+test('merges nested at-rules in merged rules', () => {
+  let root = parse(
+    'a { @media print { color: red; b { c: d } } } ' +
+      'a { @media print { margin: 0; b { e: f } } }'
+  )
+  equal(postcssJS.objectify(root), {
+    a: {
+      '@media print': { color: 'red', margin: '0', b: { c: 'd', e: 'f' } }
+    }
+  })
+})
+
 test.run()
